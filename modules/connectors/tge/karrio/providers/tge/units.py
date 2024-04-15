@@ -10,16 +10,16 @@ MeasurementOptions = lib.units.MeasurementOptionsType(
 class PackagingType(lib.StrEnum):
     """Carrier specific packaging type"""
 
-    PACKAGE = "PACKAGE"
+    BAG = "BG"
 
     """ Unified Packaging type mapping """
-    envelope = PACKAGE
-    pak = PACKAGE
-    tube = PACKAGE
-    pallet = PACKAGE
-    small_box = PACKAGE
-    medium_box = PACKAGE
-    your_packaging = PACKAGE
+    envelope = BAG
+    pak = BAG
+    tube = BAG
+    pallet = BAG
+    small_box = BAG
+    medium_box = BAG
+    your_packaging = BAG
 
 
 class ConnectionConfig(lib.Enum):
@@ -52,7 +52,7 @@ class ShippingOption(lib.Enum):
     """Carrier specific options"""
 
     tge_ssc_ids = lib.OptionEnum("tge_ssc_ids", list)
-    tge_shipment_id = lib.OptionEnum("tge_shipment_id")
+    tge_shipment_ids = lib.OptionEnum("tge_shipment_ids", list)
     tge_freight_mode = lib.OptionEnum("tge_freight_mode")
     tge_despatch_date = lib.OptionEnum("tge_despatch_date")
     tge_special_instruction = lib.OptionEnum("tge_special_instruction")
@@ -64,33 +64,11 @@ class ShippingOption(lib.Enum):
 def shipping_options_initializer(
     options: dict,
     package_options: units.ShippingOptions = None,
-    shipment_count: int = 0,
-    package_count: int = 0,
-    sssc_count: int = 0,
-    SSCC_GS1: str = "",
-    SHIP_GS1: str = "",
 ) -> units.ShippingOptions:
     """
     Apply default values to the given options.
     """
     _options = options.copy()
-
-    if (
-        "tge_ssc_ids" not in _options
-        and SSCC_GS1 is not None
-        and sssc_count is not None
-    ):
-        _options["tge_ssc_ids"] = [
-            f"000{SSCC_GS1}{str(sssc_count + _).zfill(6)}"
-            for _, __ in enumerate(range(package_count), start=1)
-        ]
-
-    if (
-        "tge_shipment_id" not in _options
-        and SHIP_GS1 is not None
-        and shipment_count is not None
-    ):
-        _options["tge_shipment_id"] = f"{SHIP_GS1}{str(shipment_count + 1).zfill(7)}"
 
     if package_options is not None:
         _options.update(package_options.content)

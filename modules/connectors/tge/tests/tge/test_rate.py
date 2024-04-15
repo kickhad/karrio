@@ -15,7 +15,7 @@ class TestAlliedExpressRating(unittest.TestCase):
     def test_create_rate_request(self):
         request = gateway.mapper.create_rate_request(self.RateRequest)
 
-        self.assertEqual(lib.to_dict(request.serialize()), RateRequest)
+        self.assertEqual(lib.to_dict(request.serialize()[0]), RateRequest)
 
     def test_get_rate(self):
         with patch("karrio.mappers.tge.proxy.lib.request") as mock:
@@ -81,6 +81,7 @@ ParsedRateResponse = [
             "carrier_id": "tge",
             "carrier_name": "tge",
             "currency": "AUD",
+            "service": "tge_freight_service",
             "extra_charges": [
                 {"amount": 14.92, "currency": "AUD", "name": "BaseAmount"},
                 {"amount": 12.42, "currency": "AUD", "name": "GSTAmount"},
@@ -89,7 +90,7 @@ ParsedRateResponse = [
                 {"amount": 9.22, "currency": "AUD", "name": "FreightCharge"},
                 {"amount": 4.0, "currency": "AUD", "name": "TransitTime"},
             ],
-            "meta": {"EnquiryID": "34270397"},
+            "meta": {"EnquiryID": "34270397", "service_name": "tge_freight_service"},
             "total_charge": 39.15,
             "transit_days": 4,
         }
@@ -146,7 +147,7 @@ RateRequest = {
                 },
                 "FreightMode": "Road",
                 "ShipmentFinancials": {
-                    "ExtraServicesAmount": {"Currency": "AUD", "Value": "0"}
+                    "ExtraServicesAmount": {"Currency": "AUD", "Value": "10"}
                 },
                 "ShipmentFlags": {"ExtraServiceFlag": "true"},
                 "ShipmentItems": {
@@ -157,11 +158,11 @@ RateRequest = {
                                 "CommodityDescription": "ALL FREIGHT",
                             },
                             "Dimensions": {
-                                "Height": "10.0",
-                                "Length": "10.0",
+                                "Height": "10",
+                                "Length": "10",
                                 "Volume": "0.1",
                                 "Weight": "2.0",
-                                "Width": "10.0",
+                                "Width": "10",
                             },
                             "ShipmentItemTotals": {"ShipmentItemCount": "1"},
                         }

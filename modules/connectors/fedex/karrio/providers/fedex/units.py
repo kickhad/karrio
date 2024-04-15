@@ -175,6 +175,51 @@ class PackagingType(lib.Enum):
     extra_large_box = fedex_extra_large_box
 
 
+class SubPackageType(lib.Enum):
+    fedex_bag = "BAG"
+    fedex_barrel = "BARREL"
+    fedex_basket = "BASKET"
+    fedex_box = "BOX"
+    fedex_bucket = "BUCKET"
+    fedex_bundle = "BUNDLE"
+    fedex_cage = "CAGE"
+    fedex_carton = "CARTON"
+    fedex_case = "CASE"
+    fedex_chest = "CHEST"
+    fedex_container = "CONTAINER"
+    fedex_crate = "CRATE"
+    fedex_cylinder = "CYLINDER"
+    fedex_drum = "DRUM"
+    fedex_envelope = "ENVELOPE"
+    fedex_hamper = "HAMPER"
+    fedex_other = "OTHER"
+    fedex_package = "PACKAGE"
+    fedex_pail = "PAIL"
+    fedex_pallet = "PALLET"
+    fedex_parcel = "PARCEL"
+    fedex_piece = "PIECE"
+    fedex_reel = "REEL"
+    fedex_roll = "ROLL"
+    fedex_sack = "SACK"
+    fedex_shrinkwrapped = "SHRINKWRAPPED"
+    fedex_skid = "SKID"
+    fedex_tank = "TANK"
+    fedex_totebin = "TOTEBIN"
+    fedex_tube = "TUBE"
+    fedex_unit = "UNIT"
+
+    """ Unified Packaging type mapping """
+    envelope = fedex_envelope
+    pak = fedex_other
+    tube = fedex_tube
+    pallet = fedex_pallet
+    small_box = fedex_parcel
+    medium_box = fedex_parcel
+    large_box = fedex_parcel
+    extra_large_box = fedex_parcel
+    your_packaging = fedex_other
+
+
 class PaymentType(lib.Enum):
     account = "ACCOUNT"
     collect = "COLLECT"
@@ -288,7 +333,7 @@ class ShippingOption(lib.Enum):
     fedex_priority_alert_plus = lib.OptionEnum("PRIORITY_ALERT_PLUS", bool)
     fedex_non_standard_container = lib.OptionEnum("NON_STANDARD_CONTAINER", bool)
     fedex_piece_count_verification = lib.OptionEnum("PIECE_COUNT_VERIFICATION", bool)
-    fedex_signature_option = lib.OptionEnum("SIGNATURE_OPTION", bool)
+    fedex_signature_option = lib.OptionEnum("SIGNATURE_OPTION")
     fedex_evening = lib.OptionEnum("EVENING", bool)
     fedex_date_certain = lib.OptionEnum("DATE_CERTAIN", bool)
 
@@ -406,6 +451,14 @@ class RateType(lib.Enum):
     preferred_account_shipment = "PREFERRED_ACCOUNT_SHIPMENT"
     preferred_list_package = "PREFERRED_LIST_PACKAGE"
     preferred_list_shipment = "PREFERRED_LIST_SHIPMENT"
+
+
+class SignatureOptionType(lib.Enum):
+    adult = "ADULT"
+    direct = "DIRECT"
+    indirect = "INDIRECT"
+    no_signature_required = "NO_SIGNATURE_REQUIRED"
+    service_default = "SERVICE_DEFAULT"
 
 
 class UploadDocumentType(lib.Enum):

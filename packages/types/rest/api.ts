@@ -2,9 +2,9 @@
 /* eslint-disable */
 /**
  * Karrio API
- *  ## API Reference  Karrio is an open source multi-carrier shipping API that simplifies the integration of logistics carrier services.  The Karrio API is organized around REST. Our API has predictable resource-oriented URLs, accepts JSON-encoded request bodies, returns JSON-encoded responses, and uses standard HTTP response codes, authentication, and verbs.  The Karrio API differs for every account as we release new versions. These docs are customized to your version of the API.   ## Versioning  When backwards-incompatible changes are made to the API, a new, dated version is released. The current version is `2024.2`.  Read our API changelog to learn more about backwards compatibility.  As a precaution, use API versioning to check a new API version before committing to an upgrade.   ## Environments  The Karrio API offer the possibility to create and retrieve certain objects in `test_mode`. In development, it is therefore possible to add carrier connections, get live rates, buy labels, create trackers and schedule pickups in `test_mode`.   ## Pagination  All top-level API resources have support for bulk fetches via \"list\" API methods. For instance, you can list addresses, list shipments, and list trackers. These list API methods share a common structure, taking at least these two parameters: limit, and offset.  Karrio utilizes offset-based pagination via the offset and limit parameters. Both parameters take a number as value (see below) and return objects in reverse chronological order. The offset parameter returns objects listed after an index. The limit parameter take a limit on the number of objects to be returned from 1 to 100.   ```json {     \"count\": 100,     \"next\": \"/v1/shipments?limit=25&offset=50\",     \"previous\": \"/v1/shipments?limit=25&offset=25\",     \"results\": [         { ... },     ] } ```  ## Metadata  Updateable Karrio objects—including Shipment and Order have a metadata parameter. You can use this parameter to attach key-value data to these Karrio objects.  Metadata is useful for storing additional, structured information on an object. As an example, you could store your user\'s full name and corresponding unique identifier from your system on a Karrio Order object.  Do not store any sensitive information as metadata.  ## Authentication  API keys are used to authenticate requests. You can view and manage your API keys in the Dashboard.  Your API keys carry many privileges, so be sure to keep them secure! Do not share your secret API keys in publicly accessible areas such as GitHub, client-side code, and so forth.  Authentication to the API is performed via HTTP Basic Auth. Provide your API token as the basic auth username value. You do not need to provide a password.  ```shell $ curl https://instance.api.com/v1/shipments \\     -u key_xxxxxx: # The colon prevents curl from asking for a password. ```  If you need to authenticate via bearer auth (e.g., for a cross-origin request), use `-H \"Authorization: Token key_xxxxxx\"` instead of `-u key_xxxxxx`.  All API requests must be made over [HTTPS](http://en.wikipedia.org/wiki/HTTP_Secure). API requests without authentication will also fail. 
+ *  ## API Reference  Karrio is an open source multi-carrier shipping API that simplifies the integration of logistics carrier services.  The Karrio API is organized around REST. Our API has predictable resource-oriented URLs, accepts JSON-encoded request bodies, returns JSON-encoded responses, and uses standard HTTP response codes, authentication, and verbs.  The Karrio API differs for every account as we release new versions. These docs are customized to your version of the API.   ## Versioning  When backwards-incompatible changes are made to the API, a new, dated version is released. The current version is `2024.2.15`.  Read our API changelog to learn more about backwards compatibility.  As a precaution, use API versioning to check a new API version before committing to an upgrade.   ## Environments  The Karrio API offer the possibility to create and retrieve certain objects in `test_mode`. In development, it is therefore possible to add carrier connections, get live rates, buy labels, create trackers and schedule pickups in `test_mode`.   ## Pagination  All top-level API resources have support for bulk fetches via \"list\" API methods. For instance, you can list addresses, list shipments, and list trackers. These list API methods share a common structure, taking at least these two parameters: limit, and offset.  Karrio utilizes offset-based pagination via the offset and limit parameters. Both parameters take a number as value (see below) and return objects in reverse chronological order. The offset parameter returns objects listed after an index. The limit parameter take a limit on the number of objects to be returned from 1 to 100.   ```json {     \"count\": 100,     \"next\": \"/v1/shipments?limit=25&offset=50\",     \"previous\": \"/v1/shipments?limit=25&offset=25\",     \"results\": [         { ... },     ] } ```  ## Metadata  Updateable Karrio objects—including Shipment and Order have a metadata parameter. You can use this parameter to attach key-value data to these Karrio objects.  Metadata is useful for storing additional, structured information on an object. As an example, you could store your user\'s full name and corresponding unique identifier from your system on a Karrio Order object.  Do not store any sensitive information as metadata.  ## Authentication  API keys are used to authenticate requests. You can view and manage your API keys in the Dashboard.  Your API keys carry many privileges, so be sure to keep them secure! Do not share your secret API keys in publicly accessible areas such as GitHub, client-side code, and so forth.  Authentication to the API is performed via HTTP Basic Auth. Provide your API token as the basic auth username value. You do not need to provide a password.  ```shell $ curl https://instance.api.com/v1/shipments \\     -u key_xxxxxx: # The colon prevents curl from asking for a password. ```  If you need to authenticate via bearer auth (e.g., for a cross-origin request), use `-H \"Authorization: Token key_xxxxxx\"` instead of `-u key_xxxxxx`.  All API requests must be made over [HTTPS](http://en.wikipedia.org/wiki/HTTP_Secure). API requests without authentication will also fail. 
  *
- * The version of the OpenAPI document: 2024.2
+ * The version of the OpenAPI document: 2024.2.15
  * 
  *
  * NOTE: This class is auto generated by OpenAPI Generator (https://openapi-generator.tech).
@@ -3216,37 +3216,6 @@ export type CustomsDutyBillingAddressCountryCodeEnum = typeof CustomsDutyBilling
 /**
  * 
  * @export
- * @interface CustomsList
- */
-export interface CustomsList {
-    /**
-     * 
-     * @type {number}
-     * @memberof CustomsList
-     */
-    'count'?: number | null;
-    /**
-     * 
-     * @type {string}
-     * @memberof CustomsList
-     */
-    'next'?: string | null;
-    /**
-     * 
-     * @type {string}
-     * @memberof CustomsList
-     */
-    'previous'?: string | null;
-    /**
-     * 
-     * @type {Array<Customs>}
-     * @memberof CustomsList
-     */
-    'results': Array<Customs>;
-}
-/**
- * 
- * @export
  * @interface DocumentDetails
  */
 export interface DocumentDetails {
@@ -6399,117 +6368,6 @@ export const PatchedAddressDataCountryCodeEnum = {
 } as const;
 
 export type PatchedAddressDataCountryCodeEnum = typeof PatchedAddressDataCountryCodeEnum[keyof typeof PatchedAddressDataCountryCodeEnum];
-
-/**
- * 
- * @export
- * @interface PatchedCustomsData
- */
-export interface PatchedCustomsData {
-    /**
-     * The parcel content items
-     * @type {Array<CommodityData>}
-     * @memberof PatchedCustomsData
-     */
-    'commodities'?: Array<CommodityData>;
-    /**
-     * 
-     * @type {CustomsDuty}
-     * @memberof PatchedCustomsData
-     */
-    'duty'?: CustomsDuty | null;
-    /**
-     * 
-     * @type {CustomsDataDutyBillingAddress}
-     * @memberof PatchedCustomsData
-     */
-    'duty_billing_address'?: CustomsDataDutyBillingAddress | null;
-    /**
-     * 
-     * @type {string}
-     * @memberof PatchedCustomsData
-     */
-    'content_type'?: PatchedCustomsDataContentTypeEnum | null;
-    /**
-     * 
-     * @type {string}
-     * @memberof PatchedCustomsData
-     */
-    'content_description'?: string | null;
-    /**
-     * The customs \'term of trade\' also known as \'incoterm\'
-     * @type {string}
-     * @memberof PatchedCustomsData
-     */
-    'incoterm'?: PatchedCustomsDataIncotermEnum | null;
-    /**
-     * The invoice reference number
-     * @type {string}
-     * @memberof PatchedCustomsData
-     */
-    'invoice'?: string | null;
-    /**
-     * The invoice date.<br/>         Date Format: `YYYY-MM-DD`         
-     * @type {string}
-     * @memberof PatchedCustomsData
-     */
-    'invoice_date'?: string | null;
-    /**
-     * Indicates if the shipment is commercial
-     * @type {boolean}
-     * @memberof PatchedCustomsData
-     */
-    'commercial_invoice'?: boolean | null;
-    /**
-     * Indicate that signer certified confirmed all
-     * @type {boolean}
-     * @memberof PatchedCustomsData
-     */
-    'certify'?: boolean | null;
-    /**
-     * 
-     * @type {string}
-     * @memberof PatchedCustomsData
-     */
-    'signer'?: string | null;
-    /**
-     * <details>         <summary>Customs identification options.</summary>          {             \"aes\": \"5218487281\",             \"eel_pfc\": \"5218487281\",             \"license_number\": \"5218487281\",             \"certificate_number\": \"5218487281\",             \"nip_number\": \"5218487281\",             \"eori_number\": \"5218487281\",             \"vat_registration_number\": \"5218487281\",         }         
-     * @type {{ [key: string]: any; }}
-     * @memberof PatchedCustomsData
-     */
-    'options'?: { [key: string]: any; };
-}
-
-export const PatchedCustomsDataContentTypeEnum = {
-    Documents: 'documents',
-    Gift: 'gift',
-    Sample: 'sample',
-    Merchandise: 'merchandise',
-    ReturnMerchandise: 'return_merchandise',
-    Other: 'other',
-    Empty: '',
-    Null: 'null'
-} as const;
-
-export type PatchedCustomsDataContentTypeEnum = typeof PatchedCustomsDataContentTypeEnum[keyof typeof PatchedCustomsDataContentTypeEnum];
-export const PatchedCustomsDataIncotermEnum = {
-    Cfr: 'CFR',
-    Cif: 'CIF',
-    Cip: 'CIP',
-    Cpt: 'CPT',
-    Daf: 'DAF',
-    Ddp: 'DDP',
-    Ddu: 'DDU',
-    Deq: 'DEQ',
-    Des: 'DES',
-    Exw: 'EXW',
-    Fas: 'FAS',
-    Fca: 'FCA',
-    Fob: 'FOB',
-    Null: 'null'
-} as const;
-
-export type PatchedCustomsDataIncotermEnum = typeof PatchedCustomsDataIncotermEnum[keyof typeof PatchedCustomsDataIncotermEnum];
 
 /**
  * 
@@ -10491,42 +10349,6 @@ export interface WebhookTestRequest {
 export const APIApiAxiosParamCreator = function (configuration?: Configuration) {
     return {
         /**
-         * Authenticate the user and return a token pair
-         * @summary Obtain auth token pair
-         * @param {TokenObtainPair} tokenObtainPair 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        authenticate: async (tokenObtainPair: TokenObtainPair, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
-            // verify required parameter 'tokenObtainPair' is not null or undefined
-            assertParamExists('authenticate', 'tokenObtainPair', tokenObtainPair)
-            const localVarPath = `/api/token`;
-            // use dummy base URL string because the URL constructor only accepts absolute URLs.
-            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
-            let baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-
-            const localVarRequestOptions = { method: 'POST', ...baseOptions, ...options };
-            const localVarHeaderParameter = {} as any;
-            const localVarQueryParameter = {} as any;
-
-
-
-            localVarHeaderParameter['Content-Type'] = 'application/json';
-
-            setSearchParams(localVarUrlObj, localVarQueryParameter);
-            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
-            localVarRequestOptions.headers = { ...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers };
-            localVarRequestOptions.data = serializeDataIfNeeded(tokenObtainPair, localVarRequestOptions, configuration)
-
-            return {
-                url: toPathString(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        },
-        /**
          * 
          * @summary Data References
          * @param {*} [options] Override http request option.
@@ -10541,51 +10363,15 @@ export const APIApiAxiosParamCreator = function (configuration?: Configuration) 
                 baseOptions = configuration.baseOptions;
             }
 
-            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options };
+            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
 
 
-
+    
             setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
-            localVarRequestOptions.headers = { ...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers };
-
-            return {
-                url: toPathString(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        },
-        /**
-         * Get a verified JWT token pair by submitting a Two-Factor authentication code.
-         * @summary Get verified JWT token
-         * @param {VerifiedTokenObtainPair} verifiedTokenObtainPair 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        getVerifiedToken: async (verifiedTokenObtainPair: VerifiedTokenObtainPair, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
-            // verify required parameter 'verifiedTokenObtainPair' is not null or undefined
-            assertParamExists('getVerifiedToken', 'verifiedTokenObtainPair', verifiedTokenObtainPair)
-            const localVarPath = `/api/token/verified`;
-            // use dummy base URL string because the URL constructor only accepts absolute URLs.
-            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
-            let baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-
-            const localVarRequestOptions = { method: 'POST', ...baseOptions, ...options };
-            const localVarHeaderParameter = {} as any;
-            const localVarQueryParameter = {} as any;
-
-
-
-            localVarHeaderParameter['Content-Type'] = 'application/json';
-
-            setSearchParams(localVarUrlObj, localVarQueryParameter);
-            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
-            localVarRequestOptions.headers = { ...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers };
-            localVarRequestOptions.data = serializeDataIfNeeded(verifiedTokenObtainPair, localVarRequestOptions, configuration)
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
 
             return {
                 url: toPathString(localVarUrlObj),
@@ -10607,87 +10393,15 @@ export const APIApiAxiosParamCreator = function (configuration?: Configuration) 
                 baseOptions = configuration.baseOptions;
             }
 
-            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options };
+            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
 
 
-
+    
             setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
-            localVarRequestOptions.headers = { ...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers };
-
-            return {
-                url: toPathString(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        },
-        /**
-         * Authenticate the user and return a token pair
-         * @summary Refresh auth token
-         * @param {TokenRefresh} tokenRefresh 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        refreshToken: async (tokenRefresh: TokenRefresh, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
-            // verify required parameter 'tokenRefresh' is not null or undefined
-            assertParamExists('refreshToken', 'tokenRefresh', tokenRefresh)
-            const localVarPath = `/api/token/refresh`;
-            // use dummy base URL string because the URL constructor only accepts absolute URLs.
-            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
-            let baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-
-            const localVarRequestOptions = { method: 'POST', ...baseOptions, ...options };
-            const localVarHeaderParameter = {} as any;
-            const localVarQueryParameter = {} as any;
-
-
-
-            localVarHeaderParameter['Content-Type'] = 'application/json';
-
-            setSearchParams(localVarUrlObj, localVarQueryParameter);
-            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
-            localVarRequestOptions.headers = { ...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers };
-            localVarRequestOptions.data = serializeDataIfNeeded(tokenRefresh, localVarRequestOptions, configuration)
-
-            return {
-                url: toPathString(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        },
-        /**
-         * Verify an existent authentication token
-         * @summary Verify token
-         * @param {TokenVerify} tokenVerify 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        verifyToken: async (tokenVerify: TokenVerify, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
-            // verify required parameter 'tokenVerify' is not null or undefined
-            assertParamExists('verifyToken', 'tokenVerify', tokenVerify)
-            const localVarPath = `/api/token/verify`;
-            // use dummy base URL string because the URL constructor only accepts absolute URLs.
-            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
-            let baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-
-            const localVarRequestOptions = { method: 'POST', ...baseOptions, ...options };
-            const localVarHeaderParameter = {} as any;
-            const localVarQueryParameter = {} as any;
-
-
-
-            localVarHeaderParameter['Content-Type'] = 'application/json';
-
-            setSearchParams(localVarUrlObj, localVarQueryParameter);
-            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
-            localVarRequestOptions.headers = { ...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers };
-            localVarRequestOptions.data = serializeDataIfNeeded(tokenVerify, localVarRequestOptions, configuration)
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
 
             return {
                 url: toPathString(localVarUrlObj),
@@ -10701,22 +10415,9 @@ export const APIApiAxiosParamCreator = function (configuration?: Configuration) 
  * APIApi - functional programming interface
  * @export
  */
-export const APIApiFp = function (configuration?: Configuration) {
+export const APIApiFp = function(configuration?: Configuration) {
     const localVarAxiosParamCreator = APIApiAxiosParamCreator(configuration)
     return {
-        /**
-         * Authenticate the user and return a token pair
-         * @summary Obtain auth token pair
-         * @param {TokenObtainPair} tokenObtainPair 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        async authenticate(tokenObtainPair: TokenObtainPair, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<TokenPair>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.authenticate(tokenObtainPair, options);
-            const index = configuration?.serverIndex ?? 0;
-            const operationBasePath = operationServerMap['APIApi.authenticate']?.[index]?.url;
-            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, operationBasePath || basePath);
-        },
         /**
          * 
          * @summary Data References
@@ -10727,19 +10428,6 @@ export const APIApiFp = function (configuration?: Configuration) {
             const localVarAxiosArgs = await localVarAxiosParamCreator.data(options);
             const index = configuration?.serverIndex ?? 0;
             const operationBasePath = operationServerMap['APIApi.data']?.[index]?.url;
-            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, operationBasePath || basePath);
-        },
-        /**
-         * Get a verified JWT token pair by submitting a Two-Factor authentication code.
-         * @summary Get verified JWT token
-         * @param {VerifiedTokenObtainPair} verifiedTokenObtainPair 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        async getVerifiedToken(verifiedTokenObtainPair: VerifiedTokenObtainPair, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<TokenPair>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.getVerifiedToken(verifiedTokenObtainPair, options);
-            const index = configuration?.serverIndex ?? 0;
-            const operationBasePath = operationServerMap['APIApi.getVerifiedToken']?.[index]?.url;
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, operationBasePath || basePath);
         },
         /**
@@ -10754,32 +10442,6 @@ export const APIApiFp = function (configuration?: Configuration) {
             const operationBasePath = operationServerMap['APIApi.ping']?.[index]?.url;
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, operationBasePath || basePath);
         },
-        /**
-         * Authenticate the user and return a token pair
-         * @summary Refresh auth token
-         * @param {TokenRefresh} tokenRefresh 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        async refreshToken(tokenRefresh: TokenRefresh, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<TokenPair>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.refreshToken(tokenRefresh, options);
-            const index = configuration?.serverIndex ?? 0;
-            const operationBasePath = operationServerMap['APIApi.refreshToken']?.[index]?.url;
-            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, operationBasePath || basePath);
-        },
-        /**
-         * Verify an existent authentication token
-         * @summary Verify token
-         * @param {TokenVerify} tokenVerify 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        async verifyToken(tokenVerify: TokenVerify, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<{ [key: string]: any; }>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.verifyToken(tokenVerify, options);
-            const index = configuration?.serverIndex ?? 0;
-            const operationBasePath = operationServerMap['APIApi.verifyToken']?.[index]?.url;
-            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, operationBasePath || basePath);
-        },
     }
 };
 
@@ -10791,16 +10453,6 @@ export const APIApiFactory = function (configuration?: Configuration, basePath?:
     const localVarFp = APIApiFp(configuration)
     return {
         /**
-         * Authenticate the user and return a token pair
-         * @summary Obtain auth token pair
-         * @param {APIApiAuthenticateRequest} requestParameters Request parameters.
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        authenticate(requestParameters: APIApiAuthenticateRequest, options?: AxiosRequestConfig): AxiosPromise<TokenPair> {
-            return localVarFp.authenticate(requestParameters.tokenObtainPair, options).then((request) => request(axios, basePath));
-        },
-        /**
          * 
          * @summary Data References
          * @param {*} [options] Override http request option.
@@ -10808,16 +10460,6 @@ export const APIApiFactory = function (configuration?: Configuration, basePath?:
          */
         data(options?: AxiosRequestConfig): AxiosPromise<{ [key: string]: any; }> {
             return localVarFp.data(options).then((request) => request(axios, basePath));
-        },
-        /**
-         * Get a verified JWT token pair by submitting a Two-Factor authentication code.
-         * @summary Get verified JWT token
-         * @param {APIApiGetVerifiedTokenRequest} requestParameters Request parameters.
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        getVerifiedToken(requestParameters: APIApiGetVerifiedTokenRequest, options?: AxiosRequestConfig): AxiosPromise<TokenPair> {
-            return localVarFp.getVerifiedToken(requestParameters.verifiedTokenObtainPair, options).then((request) => request(axios, basePath));
         },
         /**
          * 
@@ -10828,84 +10470,8 @@ export const APIApiFactory = function (configuration?: Configuration, basePath?:
         ping(options?: AxiosRequestConfig): AxiosPromise<{ [key: string]: any; }> {
             return localVarFp.ping(options).then((request) => request(axios, basePath));
         },
-        /**
-         * Authenticate the user and return a token pair
-         * @summary Refresh auth token
-         * @param {APIApiRefreshTokenRequest} requestParameters Request parameters.
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        refreshToken(requestParameters: APIApiRefreshTokenRequest, options?: AxiosRequestConfig): AxiosPromise<TokenPair> {
-            return localVarFp.refreshToken(requestParameters.tokenRefresh, options).then((request) => request(axios, basePath));
-        },
-        /**
-         * Verify an existent authentication token
-         * @summary Verify token
-         * @param {APIApiVerifyTokenRequest} requestParameters Request parameters.
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        verifyToken(requestParameters: APIApiVerifyTokenRequest, options?: AxiosRequestConfig): AxiosPromise<{ [key: string]: any; }> {
-            return localVarFp.verifyToken(requestParameters.tokenVerify, options).then((request) => request(axios, basePath));
-        },
     };
 };
-
-/**
- * Request parameters for authenticate operation in APIApi.
- * @export
- * @interface APIApiAuthenticateRequest
- */
-export interface APIApiAuthenticateRequest {
-    /**
-     * 
-     * @type {TokenObtainPair}
-     * @memberof APIApiAuthenticate
-     */
-    readonly tokenObtainPair: TokenObtainPair
-}
-
-/**
- * Request parameters for getVerifiedToken operation in APIApi.
- * @export
- * @interface APIApiGetVerifiedTokenRequest
- */
-export interface APIApiGetVerifiedTokenRequest {
-    /**
-     * 
-     * @type {VerifiedTokenObtainPair}
-     * @memberof APIApiGetVerifiedToken
-     */
-    readonly verifiedTokenObtainPair: VerifiedTokenObtainPair
-}
-
-/**
- * Request parameters for refreshToken operation in APIApi.
- * @export
- * @interface APIApiRefreshTokenRequest
- */
-export interface APIApiRefreshTokenRequest {
-    /**
-     * 
-     * @type {TokenRefresh}
-     * @memberof APIApiRefreshToken
-     */
-    readonly tokenRefresh: TokenRefresh
-}
-
-/**
- * Request parameters for verifyToken operation in APIApi.
- * @export
- * @interface APIApiVerifyTokenRequest
- */
-export interface APIApiVerifyTokenRequest {
-    /**
-     * 
-     * @type {TokenVerify}
-     * @memberof APIApiVerifyToken
-     */
-    readonly tokenVerify: TokenVerify
-}
 
 /**
  * APIApi - object-oriented interface
@@ -10914,18 +10480,6 @@ export interface APIApiVerifyTokenRequest {
  * @extends {BaseAPI}
  */
 export class APIApi extends BaseAPI {
-    /**
-     * Authenticate the user and return a token pair
-     * @summary Obtain auth token pair
-     * @param {APIApiAuthenticateRequest} requestParameters Request parameters.
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof APIApi
-     */
-    public authenticate(requestParameters: APIApiAuthenticateRequest, options?: AxiosRequestConfig) {
-        return APIApiFp(this.configuration).authenticate(requestParameters.tokenObtainPair, options).then((request) => request(this.axios, this.basePath));
-    }
-
     /**
      * 
      * @summary Data References
@@ -10938,18 +10492,6 @@ export class APIApi extends BaseAPI {
     }
 
     /**
-     * Get a verified JWT token pair by submitting a Two-Factor authentication code.
-     * @summary Get verified JWT token
-     * @param {APIApiGetVerifiedTokenRequest} requestParameters Request parameters.
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof APIApi
-     */
-    public getVerifiedToken(requestParameters: APIApiGetVerifiedTokenRequest, options?: AxiosRequestConfig) {
-        return APIApiFp(this.configuration).getVerifiedToken(requestParameters.verifiedTokenObtainPair, options).then((request) => request(this.axios, this.basePath));
-    }
-
-    /**
      * 
      * @summary Instance Metadata
      * @param {*} [options] Override http request option.
@@ -10958,30 +10500,6 @@ export class APIApi extends BaseAPI {
      */
     public ping(options?: AxiosRequestConfig) {
         return APIApiFp(this.configuration).ping(options).then((request) => request(this.axios, this.basePath));
-    }
-
-    /**
-     * Authenticate the user and return a token pair
-     * @summary Refresh auth token
-     * @param {APIApiRefreshTokenRequest} requestParameters Request parameters.
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof APIApi
-     */
-    public refreshToken(requestParameters: APIApiRefreshTokenRequest, options?: AxiosRequestConfig) {
-        return APIApiFp(this.configuration).refreshToken(requestParameters.tokenRefresh, options).then((request) => request(this.axios, this.basePath));
-    }
-
-    /**
-     * Verify an existent authentication token
-     * @summary Verify token
-     * @param {APIApiVerifyTokenRequest} requestParameters Request parameters.
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof APIApi
-     */
-    public verifyToken(requestParameters: APIApiVerifyTokenRequest, options?: AxiosRequestConfig) {
-        return APIApiFp(this.configuration).verifyToken(requestParameters.tokenVerify, options).then((request) => request(this.axios, this.basePath));
     }
 }
 
@@ -11011,7 +10529,7 @@ export const AddressesApiAxiosParamCreator = function (configuration?: Configura
                 baseOptions = configuration.baseOptions;
             }
 
-            const localVarRequestOptions = { method: 'POST', ...baseOptions, ...options };
+            const localVarRequestOptions = { method: 'POST', ...baseOptions, ...options};
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
 
@@ -11030,12 +10548,12 @@ export const AddressesApiAxiosParamCreator = function (configuration?: Configura
             await setApiKeyToObject(localVarHeaderParameter, "Authorization", configuration)
 
 
-
+    
             localVarHeaderParameter['Content-Type'] = 'application/json';
 
             setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
-            localVarRequestOptions.headers = { ...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers };
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
             localVarRequestOptions.data = serializeDataIfNeeded(addressData, localVarRequestOptions, configuration)
 
             return {
@@ -11062,7 +10580,7 @@ export const AddressesApiAxiosParamCreator = function (configuration?: Configura
                 baseOptions = configuration.baseOptions;
             }
 
-            const localVarRequestOptions = { method: 'DELETE', ...baseOptions, ...options };
+            const localVarRequestOptions = { method: 'DELETE', ...baseOptions, ...options};
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
 
@@ -11081,10 +10599,10 @@ export const AddressesApiAxiosParamCreator = function (configuration?: Configura
             await setApiKeyToObject(localVarHeaderParameter, "Authorization", configuration)
 
 
-
+    
             setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
-            localVarRequestOptions.headers = { ...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers };
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
 
             return {
                 url: toPathString(localVarUrlObj),
@@ -11106,7 +10624,7 @@ export const AddressesApiAxiosParamCreator = function (configuration?: Configura
                 baseOptions = configuration.baseOptions;
             }
 
-            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options };
+            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
 
@@ -11125,10 +10643,10 @@ export const AddressesApiAxiosParamCreator = function (configuration?: Configura
             await setApiKeyToObject(localVarHeaderParameter, "Authorization", configuration)
 
 
-
+    
             setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
-            localVarRequestOptions.headers = { ...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers };
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
 
             return {
                 url: toPathString(localVarUrlObj),
@@ -11154,7 +10672,7 @@ export const AddressesApiAxiosParamCreator = function (configuration?: Configura
                 baseOptions = configuration.baseOptions;
             }
 
-            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options };
+            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
 
@@ -11173,10 +10691,10 @@ export const AddressesApiAxiosParamCreator = function (configuration?: Configura
             await setApiKeyToObject(localVarHeaderParameter, "Authorization", configuration)
 
 
-
+    
             setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
-            localVarRequestOptions.headers = { ...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers };
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
 
             return {
                 url: toPathString(localVarUrlObj),
@@ -11203,7 +10721,7 @@ export const AddressesApiAxiosParamCreator = function (configuration?: Configura
                 baseOptions = configuration.baseOptions;
             }
 
-            const localVarRequestOptions = { method: 'PATCH', ...baseOptions, ...options };
+            const localVarRequestOptions = { method: 'PATCH', ...baseOptions, ...options};
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
 
@@ -11222,12 +10740,12 @@ export const AddressesApiAxiosParamCreator = function (configuration?: Configura
             await setApiKeyToObject(localVarHeaderParameter, "Authorization", configuration)
 
 
-
+    
             localVarHeaderParameter['Content-Type'] = 'application/json';
 
             setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
-            localVarRequestOptions.headers = { ...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers };
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
             localVarRequestOptions.data = serializeDataIfNeeded(patchedAddressData, localVarRequestOptions, configuration)
 
             return {
@@ -11242,7 +10760,7 @@ export const AddressesApiAxiosParamCreator = function (configuration?: Configura
  * AddressesApi - functional programming interface
  * @export
  */
-export const AddressesApiFp = function (configuration?: Configuration) {
+export const AddressesApiFp = function(configuration?: Configuration) {
     const localVarAxiosParamCreator = AddressesApiAxiosParamCreator(configuration)
     return {
         /**
@@ -11505,6 +11023,385 @@ export class AddressesApi extends BaseAPI {
 
 
 /**
+ * AuthApi - axios parameter creator
+ * @export
+ */
+export const AuthApiAxiosParamCreator = function (configuration?: Configuration) {
+    return {
+        /**
+         * Authenticate the user and return a token pair
+         * @summary Obtain auth token pair
+         * @param {TokenObtainPair} tokenObtainPair 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        authenticate: async (tokenObtainPair: TokenObtainPair, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'tokenObtainPair' is not null or undefined
+            assertParamExists('authenticate', 'tokenObtainPair', tokenObtainPair)
+            const localVarPath = `/api/token`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'POST', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+
+    
+            localVarHeaderParameter['Content-Type'] = 'application/json';
+
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+            localVarRequestOptions.data = serializeDataIfNeeded(tokenObtainPair, localVarRequestOptions, configuration)
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * Get a verified JWT token pair by submitting a Two-Factor authentication code.
+         * @summary Get verified JWT token
+         * @param {VerifiedTokenObtainPair} verifiedTokenObtainPair 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getVerifiedToken: async (verifiedTokenObtainPair: VerifiedTokenObtainPair, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'verifiedTokenObtainPair' is not null or undefined
+            assertParamExists('getVerifiedToken', 'verifiedTokenObtainPair', verifiedTokenObtainPair)
+            const localVarPath = `/api/token/verified`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'POST', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+
+    
+            localVarHeaderParameter['Content-Type'] = 'application/json';
+
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+            localVarRequestOptions.data = serializeDataIfNeeded(verifiedTokenObtainPair, localVarRequestOptions, configuration)
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * Authenticate the user and return a token pair
+         * @summary Refresh auth token
+         * @param {TokenRefresh} tokenRefresh 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        refreshToken: async (tokenRefresh: TokenRefresh, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'tokenRefresh' is not null or undefined
+            assertParamExists('refreshToken', 'tokenRefresh', tokenRefresh)
+            const localVarPath = `/api/token/refresh`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'POST', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+
+    
+            localVarHeaderParameter['Content-Type'] = 'application/json';
+
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+            localVarRequestOptions.data = serializeDataIfNeeded(tokenRefresh, localVarRequestOptions, configuration)
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * Verify an existent authentication token
+         * @summary Verify token
+         * @param {TokenVerify} tokenVerify 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        verifyToken: async (tokenVerify: TokenVerify, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'tokenVerify' is not null or undefined
+            assertParamExists('verifyToken', 'tokenVerify', tokenVerify)
+            const localVarPath = `/api/token/verify`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'POST', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+
+    
+            localVarHeaderParameter['Content-Type'] = 'application/json';
+
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+            localVarRequestOptions.data = serializeDataIfNeeded(tokenVerify, localVarRequestOptions, configuration)
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+    }
+};
+
+/**
+ * AuthApi - functional programming interface
+ * @export
+ */
+export const AuthApiFp = function(configuration?: Configuration) {
+    const localVarAxiosParamCreator = AuthApiAxiosParamCreator(configuration)
+    return {
+        /**
+         * Authenticate the user and return a token pair
+         * @summary Obtain auth token pair
+         * @param {TokenObtainPair} tokenObtainPair 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async authenticate(tokenObtainPair: TokenObtainPair, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<TokenPair>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.authenticate(tokenObtainPair, options);
+            const index = configuration?.serverIndex ?? 0;
+            const operationBasePath = operationServerMap['AuthApi.authenticate']?.[index]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, operationBasePath || basePath);
+        },
+        /**
+         * Get a verified JWT token pair by submitting a Two-Factor authentication code.
+         * @summary Get verified JWT token
+         * @param {VerifiedTokenObtainPair} verifiedTokenObtainPair 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async getVerifiedToken(verifiedTokenObtainPair: VerifiedTokenObtainPair, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<TokenPair>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.getVerifiedToken(verifiedTokenObtainPair, options);
+            const index = configuration?.serverIndex ?? 0;
+            const operationBasePath = operationServerMap['AuthApi.getVerifiedToken']?.[index]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, operationBasePath || basePath);
+        },
+        /**
+         * Authenticate the user and return a token pair
+         * @summary Refresh auth token
+         * @param {TokenRefresh} tokenRefresh 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async refreshToken(tokenRefresh: TokenRefresh, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<TokenPair>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.refreshToken(tokenRefresh, options);
+            const index = configuration?.serverIndex ?? 0;
+            const operationBasePath = operationServerMap['AuthApi.refreshToken']?.[index]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, operationBasePath || basePath);
+        },
+        /**
+         * Verify an existent authentication token
+         * @summary Verify token
+         * @param {TokenVerify} tokenVerify 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async verifyToken(tokenVerify: TokenVerify, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<{ [key: string]: any; }>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.verifyToken(tokenVerify, options);
+            const index = configuration?.serverIndex ?? 0;
+            const operationBasePath = operationServerMap['AuthApi.verifyToken']?.[index]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, operationBasePath || basePath);
+        },
+    }
+};
+
+/**
+ * AuthApi - factory interface
+ * @export
+ */
+export const AuthApiFactory = function (configuration?: Configuration, basePath?: string, axios?: AxiosInstance) {
+    const localVarFp = AuthApiFp(configuration)
+    return {
+        /**
+         * Authenticate the user and return a token pair
+         * @summary Obtain auth token pair
+         * @param {AuthApiAuthenticateRequest} requestParameters Request parameters.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        authenticate(requestParameters: AuthApiAuthenticateRequest, options?: AxiosRequestConfig): AxiosPromise<TokenPair> {
+            return localVarFp.authenticate(requestParameters.tokenObtainPair, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * Get a verified JWT token pair by submitting a Two-Factor authentication code.
+         * @summary Get verified JWT token
+         * @param {AuthApiGetVerifiedTokenRequest} requestParameters Request parameters.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getVerifiedToken(requestParameters: AuthApiGetVerifiedTokenRequest, options?: AxiosRequestConfig): AxiosPromise<TokenPair> {
+            return localVarFp.getVerifiedToken(requestParameters.verifiedTokenObtainPair, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * Authenticate the user and return a token pair
+         * @summary Refresh auth token
+         * @param {AuthApiRefreshTokenRequest} requestParameters Request parameters.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        refreshToken(requestParameters: AuthApiRefreshTokenRequest, options?: AxiosRequestConfig): AxiosPromise<TokenPair> {
+            return localVarFp.refreshToken(requestParameters.tokenRefresh, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * Verify an existent authentication token
+         * @summary Verify token
+         * @param {AuthApiVerifyTokenRequest} requestParameters Request parameters.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        verifyToken(requestParameters: AuthApiVerifyTokenRequest, options?: AxiosRequestConfig): AxiosPromise<{ [key: string]: any; }> {
+            return localVarFp.verifyToken(requestParameters.tokenVerify, options).then((request) => request(axios, basePath));
+        },
+    };
+};
+
+/**
+ * Request parameters for authenticate operation in AuthApi.
+ * @export
+ * @interface AuthApiAuthenticateRequest
+ */
+export interface AuthApiAuthenticateRequest {
+    /**
+     * 
+     * @type {TokenObtainPair}
+     * @memberof AuthApiAuthenticate
+     */
+    readonly tokenObtainPair: TokenObtainPair
+}
+
+/**
+ * Request parameters for getVerifiedToken operation in AuthApi.
+ * @export
+ * @interface AuthApiGetVerifiedTokenRequest
+ */
+export interface AuthApiGetVerifiedTokenRequest {
+    /**
+     * 
+     * @type {VerifiedTokenObtainPair}
+     * @memberof AuthApiGetVerifiedToken
+     */
+    readonly verifiedTokenObtainPair: VerifiedTokenObtainPair
+}
+
+/**
+ * Request parameters for refreshToken operation in AuthApi.
+ * @export
+ * @interface AuthApiRefreshTokenRequest
+ */
+export interface AuthApiRefreshTokenRequest {
+    /**
+     * 
+     * @type {TokenRefresh}
+     * @memberof AuthApiRefreshToken
+     */
+    readonly tokenRefresh: TokenRefresh
+}
+
+/**
+ * Request parameters for verifyToken operation in AuthApi.
+ * @export
+ * @interface AuthApiVerifyTokenRequest
+ */
+export interface AuthApiVerifyTokenRequest {
+    /**
+     * 
+     * @type {TokenVerify}
+     * @memberof AuthApiVerifyToken
+     */
+    readonly tokenVerify: TokenVerify
+}
+
+/**
+ * AuthApi - object-oriented interface
+ * @export
+ * @class AuthApi
+ * @extends {BaseAPI}
+ */
+export class AuthApi extends BaseAPI {
+    /**
+     * Authenticate the user and return a token pair
+     * @summary Obtain auth token pair
+     * @param {AuthApiAuthenticateRequest} requestParameters Request parameters.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof AuthApi
+     */
+    public authenticate(requestParameters: AuthApiAuthenticateRequest, options?: AxiosRequestConfig) {
+        return AuthApiFp(this.configuration).authenticate(requestParameters.tokenObtainPair, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * Get a verified JWT token pair by submitting a Two-Factor authentication code.
+     * @summary Get verified JWT token
+     * @param {AuthApiGetVerifiedTokenRequest} requestParameters Request parameters.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof AuthApi
+     */
+    public getVerifiedToken(requestParameters: AuthApiGetVerifiedTokenRequest, options?: AxiosRequestConfig) {
+        return AuthApiFp(this.configuration).getVerifiedToken(requestParameters.verifiedTokenObtainPair, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * Authenticate the user and return a token pair
+     * @summary Refresh auth token
+     * @param {AuthApiRefreshTokenRequest} requestParameters Request parameters.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof AuthApi
+     */
+    public refreshToken(requestParameters: AuthApiRefreshTokenRequest, options?: AxiosRequestConfig) {
+        return AuthApiFp(this.configuration).refreshToken(requestParameters.tokenRefresh, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * Verify an existent authentication token
+     * @summary Verify token
+     * @param {AuthApiVerifyTokenRequest} requestParameters Request parameters.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof AuthApi
+     */
+    public verifyToken(requestParameters: AuthApiVerifyTokenRequest, options?: AxiosRequestConfig) {
+        return AuthApiFp(this.configuration).verifyToken(requestParameters.tokenVerify, options).then((request) => request(this.axios, this.basePath));
+    }
+}
+
+
+
+/**
  * BatchesApi - axios parameter creator
  * @export
  */
@@ -11528,7 +11425,7 @@ export const BatchesApiAxiosParamCreator = function (configuration?: Configurati
                 baseOptions = configuration.baseOptions;
             }
 
-            const localVarRequestOptions = { method: 'POST', ...baseOptions, ...options };
+            const localVarRequestOptions = { method: 'POST', ...baseOptions, ...options};
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
 
@@ -11547,12 +11444,12 @@ export const BatchesApiAxiosParamCreator = function (configuration?: Configurati
             await setApiKeyToObject(localVarHeaderParameter, "Authorization", configuration)
 
 
-
+    
             localVarHeaderParameter['Content-Type'] = 'application/json';
 
             setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
-            localVarRequestOptions.headers = { ...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers };
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
             localVarRequestOptions.data = serializeDataIfNeeded(batchOrderData, localVarRequestOptions, configuration)
 
             return {
@@ -11578,7 +11475,7 @@ export const BatchesApiAxiosParamCreator = function (configuration?: Configurati
                 baseOptions = configuration.baseOptions;
             }
 
-            const localVarRequestOptions = { method: 'POST', ...baseOptions, ...options };
+            const localVarRequestOptions = { method: 'POST', ...baseOptions, ...options};
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
 
@@ -11597,12 +11494,12 @@ export const BatchesApiAxiosParamCreator = function (configuration?: Configurati
             await setApiKeyToObject(localVarHeaderParameter, "Authorization", configuration)
 
 
-
+    
             localVarHeaderParameter['Content-Type'] = 'application/json';
 
             setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
-            localVarRequestOptions.headers = { ...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers };
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
             localVarRequestOptions.data = serializeDataIfNeeded(batchShipmentData, localVarRequestOptions, configuration)
 
             return {
@@ -11628,7 +11525,7 @@ export const BatchesApiAxiosParamCreator = function (configuration?: Configurati
                 baseOptions = configuration.baseOptions;
             }
 
-            const localVarRequestOptions = { method: 'POST', ...baseOptions, ...options };
+            const localVarRequestOptions = { method: 'POST', ...baseOptions, ...options};
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
 
@@ -11647,12 +11544,12 @@ export const BatchesApiAxiosParamCreator = function (configuration?: Configurati
             await setApiKeyToObject(localVarHeaderParameter, "Authorization", configuration)
 
 
-
+    
             localVarHeaderParameter['Content-Type'] = 'application/json';
 
             setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
-            localVarRequestOptions.headers = { ...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers };
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
             localVarRequestOptions.data = serializeDataIfNeeded(batchTrackerData, localVarRequestOptions, configuration)
 
             return {
@@ -11681,7 +11578,7 @@ export const BatchesApiAxiosParamCreator = function (configuration?: Configurati
                 baseOptions = configuration.baseOptions;
             }
 
-            const localVarRequestOptions = { method: 'POST', ...baseOptions, ...options };
+            const localVarRequestOptions = { method: 'POST', ...baseOptions, ...options};
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
             const localVarFormParams = new ((configuration && configuration.formDataCtor) || FormData)();
@@ -11713,24 +11610,24 @@ export const BatchesApiAxiosParamCreator = function (configuration?: Configurati
             }
 
 
-            if (resourceType2 !== undefined) {
+            if (resourceType2 !== undefined) { 
                 localVarFormParams.append('resource_type', resourceType2 as any);
             }
-
-            if (dataTemplate2 !== undefined) {
+    
+            if (dataTemplate2 !== undefined) { 
                 localVarFormParams.append('data_template', dataTemplate2 as any);
             }
-
-            if (dataFile2 !== undefined) {
+    
+            if (dataFile2 !== undefined) { 
                 localVarFormParams.append('data_file', dataFile2 as any);
             }
-
-
+    
+    
             localVarHeaderParameter['Content-Type'] = 'multipart/form-data';
-
+    
             setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
-            localVarRequestOptions.headers = { ...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers };
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
             localVarRequestOptions.data = localVarFormParams;
 
             return {
@@ -11753,7 +11650,7 @@ export const BatchesApiAxiosParamCreator = function (configuration?: Configurati
                 baseOptions = configuration.baseOptions;
             }
 
-            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options };
+            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
 
@@ -11772,10 +11669,10 @@ export const BatchesApiAxiosParamCreator = function (configuration?: Configurati
             await setApiKeyToObject(localVarHeaderParameter, "Authorization", configuration)
 
 
-
+    
             setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
-            localVarRequestOptions.headers = { ...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers };
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
 
             return {
                 url: toPathString(localVarUrlObj),
@@ -11801,7 +11698,7 @@ export const BatchesApiAxiosParamCreator = function (configuration?: Configurati
                 baseOptions = configuration.baseOptions;
             }
 
-            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options };
+            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
 
@@ -11820,10 +11717,10 @@ export const BatchesApiAxiosParamCreator = function (configuration?: Configurati
             await setApiKeyToObject(localVarHeaderParameter, "Authorization", configuration)
 
 
-
+    
             setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
-            localVarRequestOptions.headers = { ...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers };
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
 
             return {
                 url: toPathString(localVarUrlObj),
@@ -11837,7 +11734,7 @@ export const BatchesApiAxiosParamCreator = function (configuration?: Configurati
  * BatchesApi - functional programming interface
  * @export
  */
-export const BatchesApiFp = function (configuration?: Configuration) {
+export const BatchesApiFp = function(configuration?: Configuration) {
     const localVarAxiosParamCreator = BatchesApiAxiosParamCreator(configuration)
     return {
         /**
@@ -12215,7 +12112,7 @@ export const CarriersApiAxiosParamCreator = function (configuration?: Configurat
                 baseOptions = configuration.baseOptions;
             }
 
-            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options };
+            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
 
@@ -12234,10 +12131,10 @@ export const CarriersApiAxiosParamCreator = function (configuration?: Configurat
             await setApiKeyToObject(localVarHeaderParameter, "Authorization", configuration)
 
 
-
+    
             setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
-            localVarRequestOptions.headers = { ...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers };
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
 
             return {
                 url: toPathString(localVarUrlObj),
@@ -12264,7 +12161,7 @@ export const CarriersApiAxiosParamCreator = function (configuration?: Configurat
                 baseOptions = configuration.baseOptions;
             }
 
-            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options };
+            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
 
@@ -12303,10 +12200,10 @@ export const CarriersApiAxiosParamCreator = function (configuration?: Configurat
             }
 
 
-
+    
             setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
-            localVarRequestOptions.headers = { ...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers };
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
 
             return {
                 url: toPathString(localVarUrlObj),
@@ -12332,7 +12229,7 @@ export const CarriersApiAxiosParamCreator = function (configuration?: Configurat
                 baseOptions = configuration.baseOptions;
             }
 
-            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options };
+            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
 
@@ -12351,10 +12248,10 @@ export const CarriersApiAxiosParamCreator = function (configuration?: Configurat
             await setApiKeyToObject(localVarHeaderParameter, "Authorization", configuration)
 
 
-
+    
             setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
-            localVarRequestOptions.headers = { ...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers };
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
 
             return {
                 url: toPathString(localVarUrlObj),
@@ -12368,7 +12265,7 @@ export const CarriersApiAxiosParamCreator = function (configuration?: Configurat
  * CarriersApi - functional programming interface
  * @export
  */
-export const CarriersApiFp = function (configuration?: Configuration) {
+export const CarriersApiFp = function(configuration?: Configuration) {
     const localVarAxiosParamCreator = CarriersApiAxiosParamCreator(configuration)
     return {
         /**
@@ -12574,523 +12471,6 @@ export class CarriersApi extends BaseAPI {
 
 
 /**
- * CustomsApi - axios parameter creator
- * @export
- */
-export const CustomsApiAxiosParamCreator = function (configuration?: Configuration) {
-    return {
-        /**
-         * Create a new customs declaration.
-         * @summary Create a customs info
-         * @param {CustomsData} customsData 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        create: async (customsData: CustomsData, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
-            // verify required parameter 'customsData' is not null or undefined
-            assertParamExists('create', 'customsData', customsData)
-            const localVarPath = `/v1/customs_info`;
-            // use dummy base URL string because the URL constructor only accepts absolute URLs.
-            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
-            let baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-
-            const localVarRequestOptions = { method: 'POST', ...baseOptions, ...options };
-            const localVarHeaderParameter = {} as any;
-            const localVarQueryParameter = {} as any;
-
-            // authentication OAuth2 required
-            // oauth required
-            await setOAuthToObject(localVarHeaderParameter, "OAuth2", [], configuration)
-
-            // authentication JWT required
-            await setApiKeyToObject(localVarHeaderParameter, "Authorization", configuration)
-
-            // authentication TokenBasic required
-            // http basic authentication required
-            setBasicAuthToObject(localVarRequestOptions, configuration)
-
-            // authentication Token required
-            await setApiKeyToObject(localVarHeaderParameter, "Authorization", configuration)
-
-
-
-            localVarHeaderParameter['Content-Type'] = 'application/json';
-
-            setSearchParams(localVarUrlObj, localVarQueryParameter);
-            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
-            localVarRequestOptions.headers = { ...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers };
-            localVarRequestOptions.data = serializeDataIfNeeded(customsData, localVarRequestOptions, configuration)
-
-            return {
-                url: toPathString(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        },
-        /**
-         * Discard a customs declaration.
-         * @summary Discard a customs info
-         * @param {string} id 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        discard: async (id: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
-            // verify required parameter 'id' is not null or undefined
-            assertParamExists('discard', 'id', id)
-            const localVarPath = `/v1/customs_info/{id}`
-                .replace(`{${"id"}}`, encodeURIComponent(String(id)));
-            // use dummy base URL string because the URL constructor only accepts absolute URLs.
-            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
-            let baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-
-            const localVarRequestOptions = { method: 'DELETE', ...baseOptions, ...options };
-            const localVarHeaderParameter = {} as any;
-            const localVarQueryParameter = {} as any;
-
-            // authentication OAuth2 required
-            // oauth required
-            await setOAuthToObject(localVarHeaderParameter, "OAuth2", [], configuration)
-
-            // authentication JWT required
-            await setApiKeyToObject(localVarHeaderParameter, "Authorization", configuration)
-
-            // authentication TokenBasic required
-            // http basic authentication required
-            setBasicAuthToObject(localVarRequestOptions, configuration)
-
-            // authentication Token required
-            await setApiKeyToObject(localVarHeaderParameter, "Authorization", configuration)
-
-
-
-            setSearchParams(localVarUrlObj, localVarQueryParameter);
-            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
-            localVarRequestOptions.headers = { ...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers };
-
-            return {
-                url: toPathString(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        },
-        /**
-         * Retrieve all stored customs declarations.
-         * @summary List all customs info
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        list: async (options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
-            const localVarPath = `/v1/customs_info`;
-            // use dummy base URL string because the URL constructor only accepts absolute URLs.
-            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
-            let baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-
-            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options };
-            const localVarHeaderParameter = {} as any;
-            const localVarQueryParameter = {} as any;
-
-            // authentication OAuth2 required
-            // oauth required
-            await setOAuthToObject(localVarHeaderParameter, "OAuth2", [], configuration)
-
-            // authentication JWT required
-            await setApiKeyToObject(localVarHeaderParameter, "Authorization", configuration)
-
-            // authentication TokenBasic required
-            // http basic authentication required
-            setBasicAuthToObject(localVarRequestOptions, configuration)
-
-            // authentication Token required
-            await setApiKeyToObject(localVarHeaderParameter, "Authorization", configuration)
-
-
-
-            setSearchParams(localVarUrlObj, localVarQueryParameter);
-            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
-            localVarRequestOptions.headers = { ...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers };
-
-            return {
-                url: toPathString(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        },
-        /**
-         * Retrieve customs declaration.
-         * @summary Retrieve a customs info
-         * @param {string} id 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        retrieve: async (id: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
-            // verify required parameter 'id' is not null or undefined
-            assertParamExists('retrieve', 'id', id)
-            const localVarPath = `/v1/customs_info/{id}`
-                .replace(`{${"id"}}`, encodeURIComponent(String(id)));
-            // use dummy base URL string because the URL constructor only accepts absolute URLs.
-            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
-            let baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-
-            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options };
-            const localVarHeaderParameter = {} as any;
-            const localVarQueryParameter = {} as any;
-
-            // authentication OAuth2 required
-            // oauth required
-            await setOAuthToObject(localVarHeaderParameter, "OAuth2", [], configuration)
-
-            // authentication JWT required
-            await setApiKeyToObject(localVarHeaderParameter, "Authorization", configuration)
-
-            // authentication TokenBasic required
-            // http basic authentication required
-            setBasicAuthToObject(localVarRequestOptions, configuration)
-
-            // authentication Token required
-            await setApiKeyToObject(localVarHeaderParameter, "Authorization", configuration)
-
-
-
-            setSearchParams(localVarUrlObj, localVarQueryParameter);
-            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
-            localVarRequestOptions.headers = { ...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers };
-
-            return {
-                url: toPathString(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        },
-        /**
-         * modify an existing customs declaration.
-         * @summary Update a customs info
-         * @param {string} id 
-         * @param {PatchedCustomsData} [patchedCustomsData] 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        update: async (id: string, patchedCustomsData?: PatchedCustomsData, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
-            // verify required parameter 'id' is not null or undefined
-            assertParamExists('update', 'id', id)
-            const localVarPath = `/v1/customs_info/{id}`
-                .replace(`{${"id"}}`, encodeURIComponent(String(id)));
-            // use dummy base URL string because the URL constructor only accepts absolute URLs.
-            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
-            let baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-
-            const localVarRequestOptions = { method: 'PATCH', ...baseOptions, ...options };
-            const localVarHeaderParameter = {} as any;
-            const localVarQueryParameter = {} as any;
-
-            // authentication OAuth2 required
-            // oauth required
-            await setOAuthToObject(localVarHeaderParameter, "OAuth2", [], configuration)
-
-            // authentication JWT required
-            await setApiKeyToObject(localVarHeaderParameter, "Authorization", configuration)
-
-            // authentication TokenBasic required
-            // http basic authentication required
-            setBasicAuthToObject(localVarRequestOptions, configuration)
-
-            // authentication Token required
-            await setApiKeyToObject(localVarHeaderParameter, "Authorization", configuration)
-
-
-
-            localVarHeaderParameter['Content-Type'] = 'application/json';
-
-            setSearchParams(localVarUrlObj, localVarQueryParameter);
-            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
-            localVarRequestOptions.headers = { ...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers };
-            localVarRequestOptions.data = serializeDataIfNeeded(patchedCustomsData, localVarRequestOptions, configuration)
-
-            return {
-                url: toPathString(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        },
-    }
-};
-
-/**
- * CustomsApi - functional programming interface
- * @export
- */
-export const CustomsApiFp = function (configuration?: Configuration) {
-    const localVarAxiosParamCreator = CustomsApiAxiosParamCreator(configuration)
-    return {
-        /**
-         * Create a new customs declaration.
-         * @summary Create a customs info
-         * @param {CustomsData} customsData 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        async create(customsData: CustomsData, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Customs>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.create(customsData, options);
-            const index = configuration?.serverIndex ?? 0;
-            const operationBasePath = operationServerMap['CustomsApi.create']?.[index]?.url;
-            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, operationBasePath || basePath);
-        },
-        /**
-         * Discard a customs declaration.
-         * @summary Discard a customs info
-         * @param {string} id 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        async discard(id: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Customs>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.discard(id, options);
-            const index = configuration?.serverIndex ?? 0;
-            const operationBasePath = operationServerMap['CustomsApi.discard']?.[index]?.url;
-            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, operationBasePath || basePath);
-        },
-        /**
-         * Retrieve all stored customs declarations.
-         * @summary List all customs info
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        async list(options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<CustomsList>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.list(options);
-            const index = configuration?.serverIndex ?? 0;
-            const operationBasePath = operationServerMap['CustomsApi.list']?.[index]?.url;
-            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, operationBasePath || basePath);
-        },
-        /**
-         * Retrieve customs declaration.
-         * @summary Retrieve a customs info
-         * @param {string} id 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        async retrieve(id: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Customs>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.retrieve(id, options);
-            const index = configuration?.serverIndex ?? 0;
-            const operationBasePath = operationServerMap['CustomsApi.retrieve']?.[index]?.url;
-            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, operationBasePath || basePath);
-        },
-        /**
-         * modify an existing customs declaration.
-         * @summary Update a customs info
-         * @param {string} id 
-         * @param {PatchedCustomsData} [patchedCustomsData] 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        async update(id: string, patchedCustomsData?: PatchedCustomsData, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Customs>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.update(id, patchedCustomsData, options);
-            const index = configuration?.serverIndex ?? 0;
-            const operationBasePath = operationServerMap['CustomsApi.update']?.[index]?.url;
-            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, operationBasePath || basePath);
-        },
-    }
-};
-
-/**
- * CustomsApi - factory interface
- * @export
- */
-export const CustomsApiFactory = function (configuration?: Configuration, basePath?: string, axios?: AxiosInstance) {
-    const localVarFp = CustomsApiFp(configuration)
-    return {
-        /**
-         * Create a new customs declaration.
-         * @summary Create a customs info
-         * @param {CustomsApiCreateRequest} requestParameters Request parameters.
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        create(requestParameters: CustomsApiCreateRequest, options?: AxiosRequestConfig): AxiosPromise<Customs> {
-            return localVarFp.create(requestParameters.customsData, options).then((request) => request(axios, basePath));
-        },
-        /**
-         * Discard a customs declaration.
-         * @summary Discard a customs info
-         * @param {CustomsApiDiscardRequest} requestParameters Request parameters.
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        discard(requestParameters: CustomsApiDiscardRequest, options?: AxiosRequestConfig): AxiosPromise<Customs> {
-            return localVarFp.discard(requestParameters.id, options).then((request) => request(axios, basePath));
-        },
-        /**
-         * Retrieve all stored customs declarations.
-         * @summary List all customs info
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        list(options?: AxiosRequestConfig): AxiosPromise<CustomsList> {
-            return localVarFp.list(options).then((request) => request(axios, basePath));
-        },
-        /**
-         * Retrieve customs declaration.
-         * @summary Retrieve a customs info
-         * @param {CustomsApiRetrieveRequest} requestParameters Request parameters.
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        retrieve(requestParameters: CustomsApiRetrieveRequest, options?: AxiosRequestConfig): AxiosPromise<Customs> {
-            return localVarFp.retrieve(requestParameters.id, options).then((request) => request(axios, basePath));
-        },
-        /**
-         * modify an existing customs declaration.
-         * @summary Update a customs info
-         * @param {CustomsApiUpdateRequest} requestParameters Request parameters.
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        update(requestParameters: CustomsApiUpdateRequest, options?: AxiosRequestConfig): AxiosPromise<Customs> {
-            return localVarFp.update(requestParameters.id, requestParameters.patchedCustomsData, options).then((request) => request(axios, basePath));
-        },
-    };
-};
-
-/**
- * Request parameters for create operation in CustomsApi.
- * @export
- * @interface CustomsApiCreateRequest
- */
-export interface CustomsApiCreateRequest {
-    /**
-     * 
-     * @type {CustomsData}
-     * @memberof CustomsApiCreate
-     */
-    readonly customsData: CustomsData
-}
-
-/**
- * Request parameters for discard operation in CustomsApi.
- * @export
- * @interface CustomsApiDiscardRequest
- */
-export interface CustomsApiDiscardRequest {
-    /**
-     * 
-     * @type {string}
-     * @memberof CustomsApiDiscard
-     */
-    readonly id: string
-}
-
-/**
- * Request parameters for retrieve operation in CustomsApi.
- * @export
- * @interface CustomsApiRetrieveRequest
- */
-export interface CustomsApiRetrieveRequest {
-    /**
-     * 
-     * @type {string}
-     * @memberof CustomsApiRetrieve
-     */
-    readonly id: string
-}
-
-/**
- * Request parameters for update operation in CustomsApi.
- * @export
- * @interface CustomsApiUpdateRequest
- */
-export interface CustomsApiUpdateRequest {
-    /**
-     * 
-     * @type {string}
-     * @memberof CustomsApiUpdate
-     */
-    readonly id: string
-
-    /**
-     * 
-     * @type {PatchedCustomsData}
-     * @memberof CustomsApiUpdate
-     */
-    readonly patchedCustomsData?: PatchedCustomsData
-}
-
-/**
- * CustomsApi - object-oriented interface
- * @export
- * @class CustomsApi
- * @extends {BaseAPI}
- */
-export class CustomsApi extends BaseAPI {
-    /**
-     * Create a new customs declaration.
-     * @summary Create a customs info
-     * @param {CustomsApiCreateRequest} requestParameters Request parameters.
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof CustomsApi
-     */
-    public create(requestParameters: CustomsApiCreateRequest, options?: AxiosRequestConfig) {
-        return CustomsApiFp(this.configuration).create(requestParameters.customsData, options).then((request) => request(this.axios, this.basePath));
-    }
-
-    /**
-     * Discard a customs declaration.
-     * @summary Discard a customs info
-     * @param {CustomsApiDiscardRequest} requestParameters Request parameters.
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof CustomsApi
-     */
-    public discard(requestParameters: CustomsApiDiscardRequest, options?: AxiosRequestConfig) {
-        return CustomsApiFp(this.configuration).discard(requestParameters.id, options).then((request) => request(this.axios, this.basePath));
-    }
-
-    /**
-     * Retrieve all stored customs declarations.
-     * @summary List all customs info
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof CustomsApi
-     */
-    public list(options?: AxiosRequestConfig) {
-        return CustomsApiFp(this.configuration).list(options).then((request) => request(this.axios, this.basePath));
-    }
-
-    /**
-     * Retrieve customs declaration.
-     * @summary Retrieve a customs info
-     * @param {CustomsApiRetrieveRequest} requestParameters Request parameters.
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof CustomsApi
-     */
-    public retrieve(requestParameters: CustomsApiRetrieveRequest, options?: AxiosRequestConfig) {
-        return CustomsApiFp(this.configuration).retrieve(requestParameters.id, options).then((request) => request(this.axios, this.basePath));
-    }
-
-    /**
-     * modify an existing customs declaration.
-     * @summary Update a customs info
-     * @param {CustomsApiUpdateRequest} requestParameters Request parameters.
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof CustomsApi
-     */
-    public update(requestParameters: CustomsApiUpdateRequest, options?: AxiosRequestConfig) {
-        return CustomsApiFp(this.configuration).update(requestParameters.id, requestParameters.patchedCustomsData, options).then((request) => request(this.axios, this.basePath));
-    }
-}
-
-
-
-/**
  * DocumentsApi - axios parameter creator
  * @export
  */
@@ -13114,7 +12494,7 @@ export const DocumentsApiAxiosParamCreator = function (configuration?: Configura
                 baseOptions = configuration.baseOptions;
             }
 
-            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options };
+            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
 
@@ -13149,10 +12529,10 @@ export const DocumentsApiAxiosParamCreator = function (configuration?: Configura
             }
 
 
-
+    
             setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
-            localVarRequestOptions.headers = { ...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers };
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
 
             return {
                 url: toPathString(localVarUrlObj),
@@ -13178,7 +12558,7 @@ export const DocumentsApiAxiosParamCreator = function (configuration?: Configura
                 baseOptions = configuration.baseOptions;
             }
 
-            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options };
+            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
 
@@ -13197,10 +12577,10 @@ export const DocumentsApiAxiosParamCreator = function (configuration?: Configura
             await setApiKeyToObject(localVarHeaderParameter, "Authorization", configuration)
 
 
-
+    
             setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
-            localVarRequestOptions.headers = { ...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers };
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
 
             return {
                 url: toPathString(localVarUrlObj),
@@ -13225,7 +12605,7 @@ export const DocumentsApiAxiosParamCreator = function (configuration?: Configura
                 baseOptions = configuration.baseOptions;
             }
 
-            const localVarRequestOptions = { method: 'POST', ...baseOptions, ...options };
+            const localVarRequestOptions = { method: 'POST', ...baseOptions, ...options};
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
 
@@ -13244,12 +12624,12 @@ export const DocumentsApiAxiosParamCreator = function (configuration?: Configura
             await setApiKeyToObject(localVarHeaderParameter, "Authorization", configuration)
 
 
-
+    
             localVarHeaderParameter['Content-Type'] = 'application/json';
 
             setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
-            localVarRequestOptions.headers = { ...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers };
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
             localVarRequestOptions.data = serializeDataIfNeeded(documentUploadData, localVarRequestOptions, configuration)
 
             return {
@@ -13264,7 +12644,7 @@ export const DocumentsApiAxiosParamCreator = function (configuration?: Configura
  * DocumentsApi - functional programming interface
  * @export
  */
-export const DocumentsApiFp = function (configuration?: Configuration) {
+export const DocumentsApiFp = function(configuration?: Configuration) {
     const localVarAxiosParamCreator = DocumentsApiAxiosParamCreator(configuration)
     return {
         /**
@@ -13477,7 +12857,7 @@ export const ManifestsApiAxiosParamCreator = function (configuration?: Configura
                 baseOptions = configuration.baseOptions;
             }
 
-            const localVarRequestOptions = { method: 'POST', ...baseOptions, ...options };
+            const localVarRequestOptions = { method: 'POST', ...baseOptions, ...options};
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
 
@@ -13496,12 +12876,12 @@ export const ManifestsApiAxiosParamCreator = function (configuration?: Configura
             await setApiKeyToObject(localVarHeaderParameter, "Authorization", configuration)
 
 
-
+    
             localVarHeaderParameter['Content-Type'] = 'application/json';
 
             setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
-            localVarRequestOptions.headers = { ...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers };
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
             localVarRequestOptions.data = serializeDataIfNeeded(manifestData, localVarRequestOptions, configuration)
 
             return {
@@ -13527,7 +12907,7 @@ export const ManifestsApiAxiosParamCreator = function (configuration?: Configura
                 baseOptions = configuration.baseOptions;
             }
 
-            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options };
+            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
 
@@ -13562,10 +12942,10 @@ export const ManifestsApiAxiosParamCreator = function (configuration?: Configura
             }
 
 
-
+    
             setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
-            localVarRequestOptions.headers = { ...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers };
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
 
             return {
                 url: toPathString(localVarUrlObj),
@@ -13591,7 +12971,7 @@ export const ManifestsApiAxiosParamCreator = function (configuration?: Configura
                 baseOptions = configuration.baseOptions;
             }
 
-            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options };
+            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
 
@@ -13610,10 +12990,10 @@ export const ManifestsApiAxiosParamCreator = function (configuration?: Configura
             await setApiKeyToObject(localVarHeaderParameter, "Authorization", configuration)
 
 
-
+    
             setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
-            localVarRequestOptions.headers = { ...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers };
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
 
             return {
                 url: toPathString(localVarUrlObj),
@@ -13627,7 +13007,7 @@ export const ManifestsApiAxiosParamCreator = function (configuration?: Configura
  * ManifestsApi - functional programming interface
  * @export
  */
-export const ManifestsApiFp = function (configuration?: Configuration) {
+export const ManifestsApiFp = function(configuration?: Configuration) {
     const localVarAxiosParamCreator = ManifestsApiAxiosParamCreator(configuration)
     return {
         /**
@@ -13841,7 +13221,7 @@ export const OrdersApiAxiosParamCreator = function (configuration?: Configuratio
                 baseOptions = configuration.baseOptions;
             }
 
-            const localVarRequestOptions = { method: 'POST', ...baseOptions, ...options };
+            const localVarRequestOptions = { method: 'POST', ...baseOptions, ...options};
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
 
@@ -13860,10 +13240,10 @@ export const OrdersApiAxiosParamCreator = function (configuration?: Configuratio
             await setApiKeyToObject(localVarHeaderParameter, "Authorization", configuration)
 
 
-
+    
             setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
-            localVarRequestOptions.headers = { ...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers };
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
 
             return {
                 url: toPathString(localVarUrlObj),
@@ -13888,7 +13268,7 @@ export const OrdersApiAxiosParamCreator = function (configuration?: Configuratio
                 baseOptions = configuration.baseOptions;
             }
 
-            const localVarRequestOptions = { method: 'POST', ...baseOptions, ...options };
+            const localVarRequestOptions = { method: 'POST', ...baseOptions, ...options};
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
 
@@ -13907,12 +13287,12 @@ export const OrdersApiAxiosParamCreator = function (configuration?: Configuratio
             await setApiKeyToObject(localVarHeaderParameter, "Authorization", configuration)
 
 
-
+    
             localVarHeaderParameter['Content-Type'] = 'application/json';
 
             setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
-            localVarRequestOptions.headers = { ...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers };
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
             localVarRequestOptions.data = serializeDataIfNeeded(orderData, localVarRequestOptions, configuration)
 
             return {
@@ -13940,7 +13320,7 @@ export const OrdersApiAxiosParamCreator = function (configuration?: Configuratio
                 baseOptions = configuration.baseOptions;
             }
 
-            const localVarRequestOptions = { method: 'DELETE', ...baseOptions, ...options };
+            const localVarRequestOptions = { method: 'DELETE', ...baseOptions, ...options};
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
 
@@ -13959,10 +13339,10 @@ export const OrdersApiAxiosParamCreator = function (configuration?: Configuratio
             await setApiKeyToObject(localVarHeaderParameter, "Authorization", configuration)
 
 
-
+    
             setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
-            localVarRequestOptions.headers = { ...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers };
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
 
             return {
                 url: toPathString(localVarUrlObj),
@@ -13984,7 +13364,7 @@ export const OrdersApiAxiosParamCreator = function (configuration?: Configuratio
                 baseOptions = configuration.baseOptions;
             }
 
-            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options };
+            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
 
@@ -14003,10 +13383,10 @@ export const OrdersApiAxiosParamCreator = function (configuration?: Configuratio
             await setApiKeyToObject(localVarHeaderParameter, "Authorization", configuration)
 
 
-
+    
             setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
-            localVarRequestOptions.headers = { ...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers };
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
 
             return {
                 url: toPathString(localVarUrlObj),
@@ -14032,7 +13412,7 @@ export const OrdersApiAxiosParamCreator = function (configuration?: Configuratio
                 baseOptions = configuration.baseOptions;
             }
 
-            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options };
+            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
 
@@ -14051,10 +13431,10 @@ export const OrdersApiAxiosParamCreator = function (configuration?: Configuratio
             await setApiKeyToObject(localVarHeaderParameter, "Authorization", configuration)
 
 
-
+    
             setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
-            localVarRequestOptions.headers = { ...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers };
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
 
             return {
                 url: toPathString(localVarUrlObj),
@@ -14081,7 +13461,7 @@ export const OrdersApiAxiosParamCreator = function (configuration?: Configuratio
                 baseOptions = configuration.baseOptions;
             }
 
-            const localVarRequestOptions = { method: 'PUT', ...baseOptions, ...options };
+            const localVarRequestOptions = { method: 'PUT', ...baseOptions, ...options};
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
 
@@ -14100,12 +13480,12 @@ export const OrdersApiAxiosParamCreator = function (configuration?: Configuratio
             await setApiKeyToObject(localVarHeaderParameter, "Authorization", configuration)
 
 
-
+    
             localVarHeaderParameter['Content-Type'] = 'application/json';
 
             setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
-            localVarRequestOptions.headers = { ...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers };
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
             localVarRequestOptions.data = serializeDataIfNeeded(orderUpdateData, localVarRequestOptions, configuration)
 
             return {
@@ -14120,7 +13500,7 @@ export const OrdersApiAxiosParamCreator = function (configuration?: Configuratio
  * OrdersApi - functional programming interface
  * @export
  */
-export const OrdersApiFp = function (configuration?: Configuration) {
+export const OrdersApiFp = function(configuration?: Configuration) {
     const localVarAxiosParamCreator = OrdersApiAxiosParamCreator(configuration)
     return {
         /**
@@ -14458,7 +13838,7 @@ export const ParcelsApiAxiosParamCreator = function (configuration?: Configurati
                 baseOptions = configuration.baseOptions;
             }
 
-            const localVarRequestOptions = { method: 'POST', ...baseOptions, ...options };
+            const localVarRequestOptions = { method: 'POST', ...baseOptions, ...options};
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
 
@@ -14477,12 +13857,12 @@ export const ParcelsApiAxiosParamCreator = function (configuration?: Configurati
             await setApiKeyToObject(localVarHeaderParameter, "Authorization", configuration)
 
 
-
+    
             localVarHeaderParameter['Content-Type'] = 'application/json';
 
             setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
-            localVarRequestOptions.headers = { ...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers };
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
             localVarRequestOptions.data = serializeDataIfNeeded(parcelData, localVarRequestOptions, configuration)
 
             return {
@@ -14509,7 +13889,7 @@ export const ParcelsApiAxiosParamCreator = function (configuration?: Configurati
                 baseOptions = configuration.baseOptions;
             }
 
-            const localVarRequestOptions = { method: 'DELETE', ...baseOptions, ...options };
+            const localVarRequestOptions = { method: 'DELETE', ...baseOptions, ...options};
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
 
@@ -14528,10 +13908,10 @@ export const ParcelsApiAxiosParamCreator = function (configuration?: Configurati
             await setApiKeyToObject(localVarHeaderParameter, "Authorization", configuration)
 
 
-
+    
             setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
-            localVarRequestOptions.headers = { ...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers };
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
 
             return {
                 url: toPathString(localVarUrlObj),
@@ -14553,7 +13933,7 @@ export const ParcelsApiAxiosParamCreator = function (configuration?: Configurati
                 baseOptions = configuration.baseOptions;
             }
 
-            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options };
+            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
 
@@ -14572,10 +13952,10 @@ export const ParcelsApiAxiosParamCreator = function (configuration?: Configurati
             await setApiKeyToObject(localVarHeaderParameter, "Authorization", configuration)
 
 
-
+    
             setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
-            localVarRequestOptions.headers = { ...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers };
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
 
             return {
                 url: toPathString(localVarUrlObj),
@@ -14601,7 +13981,7 @@ export const ParcelsApiAxiosParamCreator = function (configuration?: Configurati
                 baseOptions = configuration.baseOptions;
             }
 
-            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options };
+            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
 
@@ -14620,10 +14000,10 @@ export const ParcelsApiAxiosParamCreator = function (configuration?: Configurati
             await setApiKeyToObject(localVarHeaderParameter, "Authorization", configuration)
 
 
-
+    
             setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
-            localVarRequestOptions.headers = { ...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers };
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
 
             return {
                 url: toPathString(localVarUrlObj),
@@ -14650,7 +14030,7 @@ export const ParcelsApiAxiosParamCreator = function (configuration?: Configurati
                 baseOptions = configuration.baseOptions;
             }
 
-            const localVarRequestOptions = { method: 'PATCH', ...baseOptions, ...options };
+            const localVarRequestOptions = { method: 'PATCH', ...baseOptions, ...options};
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
 
@@ -14669,12 +14049,12 @@ export const ParcelsApiAxiosParamCreator = function (configuration?: Configurati
             await setApiKeyToObject(localVarHeaderParameter, "Authorization", configuration)
 
 
-
+    
             localVarHeaderParameter['Content-Type'] = 'application/json';
 
             setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
-            localVarRequestOptions.headers = { ...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers };
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
             localVarRequestOptions.data = serializeDataIfNeeded(patchedParcelData, localVarRequestOptions, configuration)
 
             return {
@@ -14689,7 +14069,7 @@ export const ParcelsApiAxiosParamCreator = function (configuration?: Configurati
  * ParcelsApi - functional programming interface
  * @export
  */
-export const ParcelsApiFp = function (configuration?: Configuration) {
+export const ParcelsApiFp = function(configuration?: Configuration) {
     const localVarAxiosParamCreator = ParcelsApiAxiosParamCreator(configuration)
     return {
         /**
@@ -14977,7 +14357,7 @@ export const PickupsApiAxiosParamCreator = function (configuration?: Configurati
                 baseOptions = configuration.baseOptions;
             }
 
-            const localVarRequestOptions = { method: 'POST', ...baseOptions, ...options };
+            const localVarRequestOptions = { method: 'POST', ...baseOptions, ...options};
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
 
@@ -14996,12 +14376,12 @@ export const PickupsApiAxiosParamCreator = function (configuration?: Configurati
             await setApiKeyToObject(localVarHeaderParameter, "Authorization", configuration)
 
 
-
+    
             localVarHeaderParameter['Content-Type'] = 'application/json';
 
             setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
-            localVarRequestOptions.headers = { ...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers };
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
             localVarRequestOptions.data = serializeDataIfNeeded(pickupCancelData, localVarRequestOptions, configuration)
 
             return {
@@ -15024,7 +14404,7 @@ export const PickupsApiAxiosParamCreator = function (configuration?: Configurati
                 baseOptions = configuration.baseOptions;
             }
 
-            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options };
+            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
 
@@ -15043,10 +14423,10 @@ export const PickupsApiAxiosParamCreator = function (configuration?: Configurati
             await setApiKeyToObject(localVarHeaderParameter, "Authorization", configuration)
 
 
-
+    
             setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
-            localVarRequestOptions.headers = { ...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers };
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
 
             return {
                 url: toPathString(localVarUrlObj),
@@ -15072,7 +14452,7 @@ export const PickupsApiAxiosParamCreator = function (configuration?: Configurati
                 baseOptions = configuration.baseOptions;
             }
 
-            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options };
+            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
 
@@ -15091,10 +14471,10 @@ export const PickupsApiAxiosParamCreator = function (configuration?: Configurati
             await setApiKeyToObject(localVarHeaderParameter, "Authorization", configuration)
 
 
-
+    
             setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
-            localVarRequestOptions.headers = { ...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers };
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
 
             return {
                 url: toPathString(localVarUrlObj),
@@ -15123,7 +14503,7 @@ export const PickupsApiAxiosParamCreator = function (configuration?: Configurati
                 baseOptions = configuration.baseOptions;
             }
 
-            const localVarRequestOptions = { method: 'POST', ...baseOptions, ...options };
+            const localVarRequestOptions = { method: 'POST', ...baseOptions, ...options};
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
 
@@ -15142,12 +14522,12 @@ export const PickupsApiAxiosParamCreator = function (configuration?: Configurati
             await setApiKeyToObject(localVarHeaderParameter, "Authorization", configuration)
 
 
-
+    
             localVarHeaderParameter['Content-Type'] = 'application/json';
 
             setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
-            localVarRequestOptions.headers = { ...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers };
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
             localVarRequestOptions.data = serializeDataIfNeeded(pickupData, localVarRequestOptions, configuration)
 
             return {
@@ -15177,7 +14557,7 @@ export const PickupsApiAxiosParamCreator = function (configuration?: Configurati
                 baseOptions = configuration.baseOptions;
             }
 
-            const localVarRequestOptions = { method: 'POST', ...baseOptions, ...options };
+            const localVarRequestOptions = { method: 'POST', ...baseOptions, ...options};
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
 
@@ -15196,12 +14576,12 @@ export const PickupsApiAxiosParamCreator = function (configuration?: Configurati
             await setApiKeyToObject(localVarHeaderParameter, "Authorization", configuration)
 
 
-
+    
             localVarHeaderParameter['Content-Type'] = 'application/json';
 
             setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
-            localVarRequestOptions.headers = { ...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers };
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
             localVarRequestOptions.data = serializeDataIfNeeded(pickupUpdateData, localVarRequestOptions, configuration)
 
             return {
@@ -15216,7 +14596,7 @@ export const PickupsApiAxiosParamCreator = function (configuration?: Configurati
  * PickupsApi - functional programming interface
  * @export
  */
-export const PickupsApiFp = function (configuration?: Configuration) {
+export const PickupsApiFp = function(configuration?: Configuration) {
     const localVarAxiosParamCreator = PickupsApiAxiosParamCreator(configuration)
     return {
         /**
@@ -15518,7 +14898,7 @@ export const ProxyApiAxiosParamCreator = function (configuration?: Configuration
                 baseOptions = configuration.baseOptions;
             }
 
-            const localVarRequestOptions = { method: 'POST', ...baseOptions, ...options };
+            const localVarRequestOptions = { method: 'POST', ...baseOptions, ...options};
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
 
@@ -15537,12 +14917,12 @@ export const ProxyApiAxiosParamCreator = function (configuration?: Configuration
             await setApiKeyToObject(localVarHeaderParameter, "Authorization", configuration)
 
 
-
+    
             localVarHeaderParameter['Content-Type'] = 'application/json';
 
             setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
-            localVarRequestOptions.headers = { ...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers };
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
             localVarRequestOptions.data = serializeDataIfNeeded(shippingRequest, localVarRequestOptions, configuration)
 
             return {
@@ -15572,7 +14952,7 @@ export const ProxyApiAxiosParamCreator = function (configuration?: Configuration
                 baseOptions = configuration.baseOptions;
             }
 
-            const localVarRequestOptions = { method: 'POST', ...baseOptions, ...options };
+            const localVarRequestOptions = { method: 'POST', ...baseOptions, ...options};
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
 
@@ -15591,12 +14971,12 @@ export const ProxyApiAxiosParamCreator = function (configuration?: Configuration
             await setApiKeyToObject(localVarHeaderParameter, "Authorization", configuration)
 
 
-
+    
             localVarHeaderParameter['Content-Type'] = 'application/json';
 
             setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
-            localVarRequestOptions.headers = { ...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers };
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
             localVarRequestOptions.data = serializeDataIfNeeded(pickupCancelRequest, localVarRequestOptions, configuration)
 
             return {
@@ -15622,7 +15002,7 @@ export const ProxyApiAxiosParamCreator = function (configuration?: Configuration
                 baseOptions = configuration.baseOptions;
             }
 
-            const localVarRequestOptions = { method: 'POST', ...baseOptions, ...options };
+            const localVarRequestOptions = { method: 'POST', ...baseOptions, ...options};
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
 
@@ -15641,12 +15021,12 @@ export const ProxyApiAxiosParamCreator = function (configuration?: Configuration
             await setApiKeyToObject(localVarHeaderParameter, "Authorization", configuration)
 
 
-
+    
             localVarHeaderParameter['Content-Type'] = 'application/json';
 
             setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
-            localVarRequestOptions.headers = { ...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers };
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
             localVarRequestOptions.data = serializeDataIfNeeded(manifestRequest, localVarRequestOptions, configuration)
 
             return {
@@ -15672,7 +15052,7 @@ export const ProxyApiAxiosParamCreator = function (configuration?: Configuration
                 baseOptions = configuration.baseOptions;
             }
 
-            const localVarRequestOptions = { method: 'POST', ...baseOptions, ...options };
+            const localVarRequestOptions = { method: 'POST', ...baseOptions, ...options};
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
 
@@ -15691,12 +15071,12 @@ export const ProxyApiAxiosParamCreator = function (configuration?: Configuration
             await setApiKeyToObject(localVarHeaderParameter, "Authorization", configuration)
 
 
-
+    
             localVarHeaderParameter['Content-Type'] = 'application/json';
 
             setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
-            localVarRequestOptions.headers = { ...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers };
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
             localVarRequestOptions.data = serializeDataIfNeeded(rateRequest, localVarRequestOptions, configuration)
 
             return {
@@ -15723,7 +15103,7 @@ export const ProxyApiAxiosParamCreator = function (configuration?: Configuration
                 baseOptions = configuration.baseOptions;
             }
 
-            const localVarRequestOptions = { method: 'POST', ...baseOptions, ...options };
+            const localVarRequestOptions = { method: 'POST', ...baseOptions, ...options};
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
 
@@ -15746,12 +15126,12 @@ export const ProxyApiAxiosParamCreator = function (configuration?: Configuration
             }
 
 
-
+    
             localVarHeaderParameter['Content-Type'] = 'application/json';
 
             setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
-            localVarRequestOptions.headers = { ...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers };
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
             localVarRequestOptions.data = serializeDataIfNeeded(trackingData, localVarRequestOptions, configuration)
 
             return {
@@ -15781,7 +15161,7 @@ export const ProxyApiAxiosParamCreator = function (configuration?: Configuration
                 baseOptions = configuration.baseOptions;
             }
 
-            const localVarRequestOptions = { method: 'POST', ...baseOptions, ...options };
+            const localVarRequestOptions = { method: 'POST', ...baseOptions, ...options};
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
 
@@ -15800,12 +15180,12 @@ export const ProxyApiAxiosParamCreator = function (configuration?: Configuration
             await setApiKeyToObject(localVarHeaderParameter, "Authorization", configuration)
 
 
-
+    
             localVarHeaderParameter['Content-Type'] = 'application/json';
 
             setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
-            localVarRequestOptions.headers = { ...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers };
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
             localVarRequestOptions.data = serializeDataIfNeeded(pickupRequest, localVarRequestOptions, configuration)
 
             return {
@@ -15838,7 +15218,7 @@ export const ProxyApiAxiosParamCreator = function (configuration?: Configuration
                 baseOptions = configuration.baseOptions;
             }
 
-            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options };
+            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
 
@@ -15861,10 +15241,10 @@ export const ProxyApiAxiosParamCreator = function (configuration?: Configuration
             }
 
 
-
+    
             setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
-            localVarRequestOptions.headers = { ...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers };
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
 
             return {
                 url: toPathString(localVarUrlObj),
@@ -15893,7 +15273,7 @@ export const ProxyApiAxiosParamCreator = function (configuration?: Configuration
                 baseOptions = configuration.baseOptions;
             }
 
-            const localVarRequestOptions = { method: 'POST', ...baseOptions, ...options };
+            const localVarRequestOptions = { method: 'POST', ...baseOptions, ...options};
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
 
@@ -15912,12 +15292,12 @@ export const ProxyApiAxiosParamCreator = function (configuration?: Configuration
             await setApiKeyToObject(localVarHeaderParameter, "Authorization", configuration)
 
 
-
+    
             localVarHeaderParameter['Content-Type'] = 'application/json';
 
             setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
-            localVarRequestOptions.headers = { ...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers };
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
             localVarRequestOptions.data = serializeDataIfNeeded(pickupUpdateRequest, localVarRequestOptions, configuration)
 
             return {
@@ -15947,7 +15327,7 @@ export const ProxyApiAxiosParamCreator = function (configuration?: Configuration
                 baseOptions = configuration.baseOptions;
             }
 
-            const localVarRequestOptions = { method: 'POST', ...baseOptions, ...options };
+            const localVarRequestOptions = { method: 'POST', ...baseOptions, ...options};
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
 
@@ -15966,12 +15346,12 @@ export const ProxyApiAxiosParamCreator = function (configuration?: Configuration
             await setApiKeyToObject(localVarHeaderParameter, "Authorization", configuration)
 
 
-
+    
             localVarHeaderParameter['Content-Type'] = 'application/json';
 
             setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
-            localVarRequestOptions.headers = { ...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers };
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
             localVarRequestOptions.data = serializeDataIfNeeded(shipmentCancelRequest, localVarRequestOptions, configuration)
 
             return {
@@ -15986,7 +15366,7 @@ export const ProxyApiAxiosParamCreator = function (configuration?: Configuration
  * ProxyApi - functional programming interface
  * @export
  */
-export const ProxyApiFp = function (configuration?: Configuration) {
+export const ProxyApiFp = function(configuration?: Configuration) {
     const localVarAxiosParamCreator = ProxyApiAxiosParamCreator(configuration)
     return {
         /**
@@ -16759,7 +16139,7 @@ export const ShipmentsApiAxiosParamCreator = function (configuration?: Configura
                 baseOptions = configuration.baseOptions;
             }
 
-            const localVarRequestOptions = { method: 'POST', ...baseOptions, ...options };
+            const localVarRequestOptions = { method: 'POST', ...baseOptions, ...options};
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
 
@@ -16778,10 +16158,10 @@ export const ShipmentsApiAxiosParamCreator = function (configuration?: Configura
             await setApiKeyToObject(localVarHeaderParameter, "Authorization", configuration)
 
 
-
+    
             setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
-            localVarRequestOptions.headers = { ...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers };
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
 
             return {
                 url: toPathString(localVarUrlObj),
@@ -16806,7 +16186,7 @@ export const ShipmentsApiAxiosParamCreator = function (configuration?: Configura
                 baseOptions = configuration.baseOptions;
             }
 
-            const localVarRequestOptions = { method: 'POST', ...baseOptions, ...options };
+            const localVarRequestOptions = { method: 'POST', ...baseOptions, ...options};
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
 
@@ -16825,12 +16205,12 @@ export const ShipmentsApiAxiosParamCreator = function (configuration?: Configura
             await setApiKeyToObject(localVarHeaderParameter, "Authorization", configuration)
 
 
-
+    
             localVarHeaderParameter['Content-Type'] = 'application/json';
 
             setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
-            localVarRequestOptions.headers = { ...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers };
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
             localVarRequestOptions.data = serializeDataIfNeeded(shipmentData, localVarRequestOptions, configuration)
 
             return {
@@ -16845,8 +16225,12 @@ export const ShipmentsApiAxiosParamCreator = function (configuration?: Configura
          * @param {string} [carrierName] The unique carrier slug. &lt;br/&gt;Values: &#x60;allied_express&#x60;, &#x60;allied_express_local&#x60;, &#x60;amazon_shipping&#x60;, &#x60;aramex&#x60;, &#x60;asendia_us&#x60;, &#x60;australiapost&#x60;, &#x60;boxknight&#x60;, &#x60;bpost&#x60;, &#x60;canadapost&#x60;, &#x60;canpar&#x60;, &#x60;chronopost&#x60;, &#x60;colissimo&#x60;, &#x60;dhl_express&#x60;, &#x60;dhl_parcel_de&#x60;, &#x60;dhl_poland&#x60;, &#x60;dhl_universal&#x60;, &#x60;dicom&#x60;, &#x60;dpd&#x60;, &#x60;dpdhl&#x60;, &#x60;easypost&#x60;, &#x60;eshipper&#x60;, &#x60;fedex&#x60;, &#x60;fedex_ws&#x60;, &#x60;freightcom&#x60;, &#x60;generic&#x60;, &#x60;geodis&#x60;, &#x60;laposte&#x60;, &#x60;locate2u&#x60;, &#x60;nationex&#x60;, &#x60;purolator&#x60;, &#x60;roadie&#x60;, &#x60;royalmail&#x60;, &#x60;sendle&#x60;, &#x60;tge&#x60;, &#x60;tnt&#x60;, &#x60;ups&#x60;, &#x60;usps&#x60;, &#x60;usps_international&#x60;, &#x60;zoom2u&#x60;
          * @param {string} [createdAfter] 
          * @param {string} [createdBefore] 
+         * @param {boolean} [hasManifest] 
+         * @param {boolean} [hasTracker] 
          * @param {string} [id] 
          * @param {string} [keyword] 
+         * @param {string} [metaKey] 
+         * @param {string} [metaValue] 
          * @param {string} [metadataKey] 
          * @param {string} [metadataValue] 
          * @param {string} [optionKey] 
@@ -16858,7 +16242,7 @@ export const ShipmentsApiAxiosParamCreator = function (configuration?: Configura
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        list: async (address?: string, carrierName?: string, createdAfter?: string, createdBefore?: string, id?: string, keyword?: string, metadataKey?: string, metadataValue?: string, optionKey?: string, optionValue?: string, reference?: string, service?: string, status?: string, trackingNumber?: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+        list: async (address?: string, carrierName?: string, createdAfter?: string, createdBefore?: string, hasManifest?: boolean, hasTracker?: boolean, id?: string, keyword?: string, metaKey?: string, metaValue?: string, metadataKey?: string, metadataValue?: string, optionKey?: string, optionValue?: string, reference?: string, service?: string, status?: string, trackingNumber?: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
             const localVarPath = `/v1/shipments`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
@@ -16867,7 +16251,7 @@ export const ShipmentsApiAxiosParamCreator = function (configuration?: Configura
                 baseOptions = configuration.baseOptions;
             }
 
-            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options };
+            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
 
@@ -16905,12 +16289,28 @@ export const ShipmentsApiAxiosParamCreator = function (configuration?: Configura
                     createdBefore;
             }
 
+            if (hasManifest !== undefined) {
+                localVarQueryParameter['has_manifest'] = hasManifest;
+            }
+
+            if (hasTracker !== undefined) {
+                localVarQueryParameter['has_tracker'] = hasTracker;
+            }
+
             if (id !== undefined) {
                 localVarQueryParameter['id'] = id;
             }
 
             if (keyword !== undefined) {
                 localVarQueryParameter['keyword'] = keyword;
+            }
+
+            if (metaKey !== undefined) {
+                localVarQueryParameter['meta_key'] = metaKey;
+            }
+
+            if (metaValue !== undefined) {
+                localVarQueryParameter['meta_value'] = metaValue;
             }
 
             if (metadataKey !== undefined) {
@@ -16946,10 +16346,10 @@ export const ShipmentsApiAxiosParamCreator = function (configuration?: Configura
             }
 
 
-
+    
             setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
-            localVarRequestOptions.headers = { ...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers };
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
 
             return {
                 url: toPathString(localVarUrlObj),
@@ -16978,7 +16378,7 @@ export const ShipmentsApiAxiosParamCreator = function (configuration?: Configura
                 baseOptions = configuration.baseOptions;
             }
 
-            const localVarRequestOptions = { method: 'POST', ...baseOptions, ...options };
+            const localVarRequestOptions = { method: 'POST', ...baseOptions, ...options};
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
 
@@ -16997,12 +16397,12 @@ export const ShipmentsApiAxiosParamCreator = function (configuration?: Configura
             await setApiKeyToObject(localVarHeaderParameter, "Authorization", configuration)
 
 
-
+    
             localVarHeaderParameter['Content-Type'] = 'application/json';
 
             setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
-            localVarRequestOptions.headers = { ...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers };
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
             localVarRequestOptions.data = serializeDataIfNeeded(shipmentPurchaseData, localVarRequestOptions, configuration)
 
             return {
@@ -17030,7 +16430,7 @@ export const ShipmentsApiAxiosParamCreator = function (configuration?: Configura
                 baseOptions = configuration.baseOptions;
             }
 
-            const localVarRequestOptions = { method: 'POST', ...baseOptions, ...options };
+            const localVarRequestOptions = { method: 'POST', ...baseOptions, ...options};
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
 
@@ -17049,12 +16449,12 @@ export const ShipmentsApiAxiosParamCreator = function (configuration?: Configura
             await setApiKeyToObject(localVarHeaderParameter, "Authorization", configuration)
 
 
-
+    
             localVarHeaderParameter['Content-Type'] = 'application/json';
 
             setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
-            localVarRequestOptions.headers = { ...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers };
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
             localVarRequestOptions.data = serializeDataIfNeeded(shipmentRateData, localVarRequestOptions, configuration)
 
             return {
@@ -17081,7 +16481,7 @@ export const ShipmentsApiAxiosParamCreator = function (configuration?: Configura
                 baseOptions = configuration.baseOptions;
             }
 
-            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options };
+            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
 
@@ -17100,10 +16500,10 @@ export const ShipmentsApiAxiosParamCreator = function (configuration?: Configura
             await setApiKeyToObject(localVarHeaderParameter, "Authorization", configuration)
 
 
-
+    
             setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
-            localVarRequestOptions.headers = { ...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers };
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
 
             return {
                 url: toPathString(localVarUrlObj),
@@ -17130,7 +16530,7 @@ export const ShipmentsApiAxiosParamCreator = function (configuration?: Configura
                 baseOptions = configuration.baseOptions;
             }
 
-            const localVarRequestOptions = { method: 'PUT', ...baseOptions, ...options };
+            const localVarRequestOptions = { method: 'PUT', ...baseOptions, ...options};
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
 
@@ -17149,12 +16549,12 @@ export const ShipmentsApiAxiosParamCreator = function (configuration?: Configura
             await setApiKeyToObject(localVarHeaderParameter, "Authorization", configuration)
 
 
-
+    
             localVarHeaderParameter['Content-Type'] = 'application/json';
 
             setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
-            localVarRequestOptions.headers = { ...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers };
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
             localVarRequestOptions.data = serializeDataIfNeeded(shipmentUpdateData, localVarRequestOptions, configuration)
 
             return {
@@ -17169,7 +16569,7 @@ export const ShipmentsApiAxiosParamCreator = function (configuration?: Configura
  * ShipmentsApi - functional programming interface
  * @export
  */
-export const ShipmentsApiFp = function (configuration?: Configuration) {
+export const ShipmentsApiFp = function(configuration?: Configuration) {
     const localVarAxiosParamCreator = ShipmentsApiAxiosParamCreator(configuration)
     return {
         /**
@@ -17205,8 +16605,12 @@ export const ShipmentsApiFp = function (configuration?: Configuration) {
          * @param {string} [carrierName] The unique carrier slug. &lt;br/&gt;Values: &#x60;allied_express&#x60;, &#x60;allied_express_local&#x60;, &#x60;amazon_shipping&#x60;, &#x60;aramex&#x60;, &#x60;asendia_us&#x60;, &#x60;australiapost&#x60;, &#x60;boxknight&#x60;, &#x60;bpost&#x60;, &#x60;canadapost&#x60;, &#x60;canpar&#x60;, &#x60;chronopost&#x60;, &#x60;colissimo&#x60;, &#x60;dhl_express&#x60;, &#x60;dhl_parcel_de&#x60;, &#x60;dhl_poland&#x60;, &#x60;dhl_universal&#x60;, &#x60;dicom&#x60;, &#x60;dpd&#x60;, &#x60;dpdhl&#x60;, &#x60;easypost&#x60;, &#x60;eshipper&#x60;, &#x60;fedex&#x60;, &#x60;fedex_ws&#x60;, &#x60;freightcom&#x60;, &#x60;generic&#x60;, &#x60;geodis&#x60;, &#x60;laposte&#x60;, &#x60;locate2u&#x60;, &#x60;nationex&#x60;, &#x60;purolator&#x60;, &#x60;roadie&#x60;, &#x60;royalmail&#x60;, &#x60;sendle&#x60;, &#x60;tge&#x60;, &#x60;tnt&#x60;, &#x60;ups&#x60;, &#x60;usps&#x60;, &#x60;usps_international&#x60;, &#x60;zoom2u&#x60;
          * @param {string} [createdAfter] 
          * @param {string} [createdBefore] 
+         * @param {boolean} [hasManifest] 
+         * @param {boolean} [hasTracker] 
          * @param {string} [id] 
          * @param {string} [keyword] 
+         * @param {string} [metaKey] 
+         * @param {string} [metaValue] 
          * @param {string} [metadataKey] 
          * @param {string} [metadataValue] 
          * @param {string} [optionKey] 
@@ -17218,8 +16622,8 @@ export const ShipmentsApiFp = function (configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async list(address?: string, carrierName?: string, createdAfter?: string, createdBefore?: string, id?: string, keyword?: string, metadataKey?: string, metadataValue?: string, optionKey?: string, optionValue?: string, reference?: string, service?: string, status?: string, trackingNumber?: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ShipmentList>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.list(address, carrierName, createdAfter, createdBefore, id, keyword, metadataKey, metadataValue, optionKey, optionValue, reference, service, status, trackingNumber, options);
+        async list(address?: string, carrierName?: string, createdAfter?: string, createdBefore?: string, hasManifest?: boolean, hasTracker?: boolean, id?: string, keyword?: string, metaKey?: string, metaValue?: string, metadataKey?: string, metadataValue?: string, optionKey?: string, optionValue?: string, reference?: string, service?: string, status?: string, trackingNumber?: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ShipmentList>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.list(address, carrierName, createdAfter, createdBefore, hasManifest, hasTracker, id, keyword, metaKey, metaValue, metadataKey, metadataValue, optionKey, optionValue, reference, service, status, trackingNumber, options);
             const index = configuration?.serverIndex ?? 0;
             const operationBasePath = operationServerMap['ShipmentsApi.list']?.[index]?.url;
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, operationBasePath || basePath);
@@ -17317,7 +16721,7 @@ export const ShipmentsApiFactory = function (configuration?: Configuration, base
          * @throws {RequiredError}
          */
         list(requestParameters: ShipmentsApiListRequest = {}, options?: AxiosRequestConfig): AxiosPromise<ShipmentList> {
-            return localVarFp.list(requestParameters.address, requestParameters.carrierName, requestParameters.createdAfter, requestParameters.createdBefore, requestParameters.id, requestParameters.keyword, requestParameters.metadataKey, requestParameters.metadataValue, requestParameters.optionKey, requestParameters.optionValue, requestParameters.reference, requestParameters.service, requestParameters.status, requestParameters.trackingNumber, options).then((request) => request(axios, basePath));
+            return localVarFp.list(requestParameters.address, requestParameters.carrierName, requestParameters.createdAfter, requestParameters.createdBefore, requestParameters.hasManifest, requestParameters.hasTracker, requestParameters.id, requestParameters.keyword, requestParameters.metaKey, requestParameters.metaValue, requestParameters.metadataKey, requestParameters.metadataValue, requestParameters.optionKey, requestParameters.optionValue, requestParameters.reference, requestParameters.service, requestParameters.status, requestParameters.trackingNumber, options).then((request) => request(axios, basePath));
         },
         /**
          * Select your preferred rates to buy a shipment label.
@@ -17426,6 +16830,20 @@ export interface ShipmentsApiListRequest {
 
     /**
      * 
+     * @type {boolean}
+     * @memberof ShipmentsApiList
+     */
+    readonly hasManifest?: boolean
+
+    /**
+     * 
+     * @type {boolean}
+     * @memberof ShipmentsApiList
+     */
+    readonly hasTracker?: boolean
+
+    /**
+     * 
      * @type {string}
      * @memberof ShipmentsApiList
      */
@@ -17437,6 +16855,20 @@ export interface ShipmentsApiListRequest {
      * @memberof ShipmentsApiList
      */
     readonly keyword?: string
+
+    /**
+     * 
+     * @type {string}
+     * @memberof ShipmentsApiList
+     */
+    readonly metaKey?: string
+
+    /**
+     * 
+     * @type {string}
+     * @memberof ShipmentsApiList
+     */
+    readonly metaValue?: string
 
     /**
      * 
@@ -17612,7 +17044,7 @@ export class ShipmentsApi extends BaseAPI {
      * @memberof ShipmentsApi
      */
     public list(requestParameters: ShipmentsApiListRequest = {}, options?: AxiosRequestConfig) {
-        return ShipmentsApiFp(this.configuration).list(requestParameters.address, requestParameters.carrierName, requestParameters.createdAfter, requestParameters.createdBefore, requestParameters.id, requestParameters.keyword, requestParameters.metadataKey, requestParameters.metadataValue, requestParameters.optionKey, requestParameters.optionValue, requestParameters.reference, requestParameters.service, requestParameters.status, requestParameters.trackingNumber, options).then((request) => request(this.axios, this.basePath));
+        return ShipmentsApiFp(this.configuration).list(requestParameters.address, requestParameters.carrierName, requestParameters.createdAfter, requestParameters.createdBefore, requestParameters.hasManifest, requestParameters.hasTracker, requestParameters.id, requestParameters.keyword, requestParameters.metaKey, requestParameters.metaValue, requestParameters.metadataKey, requestParameters.metadataValue, requestParameters.optionKey, requestParameters.optionValue, requestParameters.reference, requestParameters.service, requestParameters.status, requestParameters.trackingNumber, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
@@ -17692,7 +17124,7 @@ export const TrackersApiAxiosParamCreator = function (configuration?: Configurat
                 baseOptions = configuration.baseOptions;
             }
 
-            const localVarRequestOptions = { method: 'POST', ...baseOptions, ...options };
+            const localVarRequestOptions = { method: 'POST', ...baseOptions, ...options};
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
 
@@ -17719,12 +17151,12 @@ export const TrackersApiAxiosParamCreator = function (configuration?: Configurat
             }
 
 
-
+    
             localVarHeaderParameter['Content-Type'] = 'application/json';
 
             setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
-            localVarRequestOptions.headers = { ...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers };
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
             localVarRequestOptions.data = serializeDataIfNeeded(trackingData, localVarRequestOptions, configuration)
 
             return {
@@ -17760,7 +17192,7 @@ export const TrackersApiAxiosParamCreator = function (configuration?: Configurat
                 baseOptions = configuration.baseOptions;
             }
 
-            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options };
+            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
 
@@ -17787,10 +17219,10 @@ export const TrackersApiAxiosParamCreator = function (configuration?: Configurat
             }
 
 
-
+    
             setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
-            localVarRequestOptions.headers = { ...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers };
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
 
             return {
                 url: toPathString(localVarUrlObj),
@@ -17817,7 +17249,7 @@ export const TrackersApiAxiosParamCreator = function (configuration?: Configurat
                 baseOptions = configuration.baseOptions;
             }
 
-            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options };
+            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
 
@@ -17860,10 +17292,10 @@ export const TrackersApiAxiosParamCreator = function (configuration?: Configurat
             }
 
 
-
+    
             setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
-            localVarRequestOptions.headers = { ...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers };
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
 
             return {
                 url: toPathString(localVarUrlObj),
@@ -17889,7 +17321,7 @@ export const TrackersApiAxiosParamCreator = function (configuration?: Configurat
                 baseOptions = configuration.baseOptions;
             }
 
-            const localVarRequestOptions = { method: 'DELETE', ...baseOptions, ...options };
+            const localVarRequestOptions = { method: 'DELETE', ...baseOptions, ...options};
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
 
@@ -17908,10 +17340,10 @@ export const TrackersApiAxiosParamCreator = function (configuration?: Configurat
             await setApiKeyToObject(localVarHeaderParameter, "Authorization", configuration)
 
 
-
+    
             setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
-            localVarRequestOptions.headers = { ...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers };
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
 
             return {
                 url: toPathString(localVarUrlObj),
@@ -17937,7 +17369,7 @@ export const TrackersApiAxiosParamCreator = function (configuration?: Configurat
                 baseOptions = configuration.baseOptions;
             }
 
-            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options };
+            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
 
@@ -17956,10 +17388,10 @@ export const TrackersApiAxiosParamCreator = function (configuration?: Configurat
             await setApiKeyToObject(localVarHeaderParameter, "Authorization", configuration)
 
 
-
+    
             setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
-            localVarRequestOptions.headers = { ...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers };
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
 
             return {
                 url: toPathString(localVarUrlObj),
@@ -17986,7 +17418,7 @@ export const TrackersApiAxiosParamCreator = function (configuration?: Configurat
                 baseOptions = configuration.baseOptions;
             }
 
-            const localVarRequestOptions = { method: 'PUT', ...baseOptions, ...options };
+            const localVarRequestOptions = { method: 'PUT', ...baseOptions, ...options};
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
 
@@ -18005,12 +17437,12 @@ export const TrackersApiAxiosParamCreator = function (configuration?: Configurat
             await setApiKeyToObject(localVarHeaderParameter, "Authorization", configuration)
 
 
-
+    
             localVarHeaderParameter['Content-Type'] = 'application/json';
 
             setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
-            localVarRequestOptions.headers = { ...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers };
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
             localVarRequestOptions.data = serializeDataIfNeeded(trackerUpdateData, localVarRequestOptions, configuration)
 
             return {
@@ -18025,7 +17457,7 @@ export const TrackersApiAxiosParamCreator = function (configuration?: Configurat
  * TrackersApi - functional programming interface
  * @export
  */
-export const TrackersApiFp = function (configuration?: Configuration) {
+export const TrackersApiFp = function(configuration?: Configuration) {
     const localVarAxiosParamCreator = TrackersApiAxiosParamCreator(configuration)
     return {
         /**
@@ -18494,7 +17926,7 @@ export const WebhooksApiAxiosParamCreator = function (configuration?: Configurat
                 baseOptions = configuration.baseOptions;
             }
 
-            const localVarRequestOptions = { method: 'POST', ...baseOptions, ...options };
+            const localVarRequestOptions = { method: 'POST', ...baseOptions, ...options};
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
 
@@ -18513,12 +17945,12 @@ export const WebhooksApiAxiosParamCreator = function (configuration?: Configurat
             await setApiKeyToObject(localVarHeaderParameter, "Authorization", configuration)
 
 
-
+    
             localVarHeaderParameter['Content-Type'] = 'application/json';
 
             setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
-            localVarRequestOptions.headers = { ...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers };
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
             localVarRequestOptions.data = serializeDataIfNeeded(webhookData, localVarRequestOptions, configuration)
 
             return {
@@ -18541,7 +17973,7 @@ export const WebhooksApiAxiosParamCreator = function (configuration?: Configurat
                 baseOptions = configuration.baseOptions;
             }
 
-            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options };
+            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
 
@@ -18560,10 +17992,10 @@ export const WebhooksApiAxiosParamCreator = function (configuration?: Configurat
             await setApiKeyToObject(localVarHeaderParameter, "Authorization", configuration)
 
 
-
+    
             setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
-            localVarRequestOptions.headers = { ...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers };
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
 
             return {
                 url: toPathString(localVarUrlObj),
@@ -18589,7 +18021,7 @@ export const WebhooksApiAxiosParamCreator = function (configuration?: Configurat
                 baseOptions = configuration.baseOptions;
             }
 
-            const localVarRequestOptions = { method: 'DELETE', ...baseOptions, ...options };
+            const localVarRequestOptions = { method: 'DELETE', ...baseOptions, ...options};
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
 
@@ -18608,10 +18040,10 @@ export const WebhooksApiAxiosParamCreator = function (configuration?: Configurat
             await setApiKeyToObject(localVarHeaderParameter, "Authorization", configuration)
 
 
-
+    
             setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
-            localVarRequestOptions.headers = { ...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers };
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
 
             return {
                 url: toPathString(localVarUrlObj),
@@ -18637,7 +18069,7 @@ export const WebhooksApiAxiosParamCreator = function (configuration?: Configurat
                 baseOptions = configuration.baseOptions;
             }
 
-            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options };
+            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
 
@@ -18656,10 +18088,10 @@ export const WebhooksApiAxiosParamCreator = function (configuration?: Configurat
             await setApiKeyToObject(localVarHeaderParameter, "Authorization", configuration)
 
 
-
+    
             setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
-            localVarRequestOptions.headers = { ...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers };
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
 
             return {
                 url: toPathString(localVarUrlObj),
@@ -18688,7 +18120,7 @@ export const WebhooksApiAxiosParamCreator = function (configuration?: Configurat
                 baseOptions = configuration.baseOptions;
             }
 
-            const localVarRequestOptions = { method: 'POST', ...baseOptions, ...options };
+            const localVarRequestOptions = { method: 'POST', ...baseOptions, ...options};
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
 
@@ -18707,12 +18139,12 @@ export const WebhooksApiAxiosParamCreator = function (configuration?: Configurat
             await setApiKeyToObject(localVarHeaderParameter, "Authorization", configuration)
 
 
-
+    
             localVarHeaderParameter['Content-Type'] = 'application/json';
 
             setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
-            localVarRequestOptions.headers = { ...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers };
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
             localVarRequestOptions.data = serializeDataIfNeeded(webhookTestRequest, localVarRequestOptions, configuration)
 
             return {
@@ -18740,7 +18172,7 @@ export const WebhooksApiAxiosParamCreator = function (configuration?: Configurat
                 baseOptions = configuration.baseOptions;
             }
 
-            const localVarRequestOptions = { method: 'PATCH', ...baseOptions, ...options };
+            const localVarRequestOptions = { method: 'PATCH', ...baseOptions, ...options};
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
 
@@ -18759,12 +18191,12 @@ export const WebhooksApiAxiosParamCreator = function (configuration?: Configurat
             await setApiKeyToObject(localVarHeaderParameter, "Authorization", configuration)
 
 
-
+    
             localVarHeaderParameter['Content-Type'] = 'application/json';
 
             setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
-            localVarRequestOptions.headers = { ...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers };
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
             localVarRequestOptions.data = serializeDataIfNeeded(patchedWebhookData, localVarRequestOptions, configuration)
 
             return {
@@ -18779,7 +18211,7 @@ export const WebhooksApiAxiosParamCreator = function (configuration?: Configurat
  * WebhooksApi - functional programming interface
  * @export
  */
-export const WebhooksApiFp = function (configuration?: Configuration) {
+export const WebhooksApiFp = function(configuration?: Configuration) {
     const localVarAxiosParamCreator = WebhooksApiAxiosParamCreator(configuration)
     return {
         /**

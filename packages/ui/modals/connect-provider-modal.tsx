@@ -776,6 +776,22 @@ export const ConnectProviderModal: React.FC<ConnectProviderModalComponent> = ({ 
                               </div>
                             </div>}
 
+                          {"transmit_shipment_by_default" in connection_configs[carrier_name.toString()] &&
+                            <div className="field column is-6 mb-0">
+                              <div className="control">
+                                <label className="checkbox has-text-weight-bold mt-3 pt-1">
+                                  <input
+                                    type="checkbox"
+                                    checked={payload.config?.transmit_shipment_by_default}
+                                    name="transmit_shipment_by_default"
+                                    onChange={handleConfigChange}
+                                  />
+                                  {' '}
+                                  <span style={{ fontSize: '0.8em' }}>Submit shipment by default</span>
+                                </label>
+                              </div>
+                            </div>}
+
                           {"skip_service_filter" in connection_configs[carrier_name.toString()] &&
                             <div className="field column is-6 mb-0">
                               <div className="control">
@@ -962,6 +978,24 @@ export const ConnectProviderModal: React.FC<ConnectProviderModalComponent> = ({ 
                               className="is-small is-fullwidth"
                               placeholder='https://your-instance.api.com.au'
                             />}
+
+                          {"rate_request_types" in connection_configs[carrier_name.toString()] &&
+                            <SelectField value={payload.config?.rate_request_types}
+                              name="rate_request_types"
+                              label="Rate request types"
+                              onChange={handleConfigChange}
+                              className="is-small is-fullwidth"
+                              wrapperClass="column is-6 pt-1"
+                              fieldClass="mb-0"
+                              size={3}
+                              multiple
+                            >
+                              <option value='none'></option>
+                              <option value='LIST'>LIST</option>
+                              <option value='PREFERRED'>PREFERRED</option>
+                              <option value='INCENTIVE'>INCENTIVE</option>
+                              <option value='ACCOUNT'>ACCOUNT</option>
+                            </SelectField>}
 
                           {"shipping_services" in connection_configs[carrier_name.toString()] &&
                             <SelectField defaultValue={payload.config?.shipping_services}

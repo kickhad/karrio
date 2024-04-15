@@ -214,6 +214,7 @@ ShipmentRequest = [
         "accountNumber": {"value": "2349857"},
         "labelResponseOptions": "LABEL",
         "requestedShipment": {
+            "blockInsightVisibility": False,
             "customsClearanceDetail": {
                 "commercialInvoice": {
                     "customerReferences": [
@@ -229,11 +230,13 @@ ShipmentRequest = [
                     {
                         "countryOfManufacture": "US",
                         "description": "test",
+                        "name": "test",
                         "harmonizedCode": "00339BB",
                         "numberOfPieces": 1,
                         "quantity": 1,
-                        "quantityUnits": "EA",
+                        "quantityUnits": "PCS",
                         "weight": {"units": "LB", "value": 10.0},
+                        "customsValue": {"amount": 1.0, "currency": "USD"},
                     }
                 ],
                 "dutiesPayment": {
@@ -294,24 +297,26 @@ ShipmentRequest = [
             ],
             "requestedPackageLineItems": [
                 {
+                    "declaredValue": {"amount": 1.0, "currency": "USD"},
                     "dimensions": {
                         "height": 12.0,
                         "length": 12.0,
                         "units": "IN",
                         "width": 12.0,
                     },
+                    "groupPackageCount": 1,
                     "packageSpecialServices": {
-                        "signatureOptionType": True,
+                        "signatureOptionType": "SERVICE_DEFAULT",
                         "specialServiceTypes": ["SIGNATURE_OPTION"],
                     },
                     "sequenceNumber": 1,
+                    "subPackagingType": "OTHER",
                     "weight": {"units": "LB", "value": 20.0},
                 }
             ],
             "serviceType": "FEDEX_INTERNATIONAL_PRIORITY",
             "shipDatestamp": "2024-02-15",
             "shipper": {
-                "accountNumber": "2349857",
                 "address": {
                     "city": "MEMPHIS",
                     "countryCode": "US",
@@ -334,22 +339,6 @@ ShipmentRequest = [
             "shippingDocumentSpecification": {
                 "shippingDocumentTypes": ["COMMERCIAL_INVOICE"]
             },
-            "soldTo": {
-                "address": {
-                    "city": "RICHMOND",
-                    "countryCode": "CA",
-                    "postalCode": "V7C4v7",
-                    "residential": False,
-                    "stateOrProvinceCode": "BC",
-                    "streetLines": ["Input Your Information", "Input Your Information"],
-                },
-                "contact": {
-                    "companyName": "Input Your Information",
-                    "emailAddress": "Input Your Information",
-                    "personName": "Input Your Information",
-                    "phoneNumber": "Input Your Information",
-                },
-            },
             "totalPackageCount": 1,
             "totalWeight": 20.0,
         },
@@ -362,6 +351,7 @@ MultiPieceShipmentRequest = [
         "accountNumber": {"value": "2349857"},
         "labelResponseOptions": "LABEL",
         "requestedShipment": {
+            "blockInsightVisibility": False,
             "customsClearanceDetail": {
                 "commercialInvoice": {
                     "customerReferences": [
@@ -377,11 +367,13 @@ MultiPieceShipmentRequest = [
                     {
                         "countryOfManufacture": "US",
                         "description": "test",
+                        "name": "test",
                         "harmonizedCode": "00339BB",
                         "numberOfPieces": 1,
                         "quantity": 1,
-                        "quantityUnits": "EA",
+                        "quantityUnits": "PCS",
                         "weight": {"units": "LB", "value": 10.0},
+                        "customsValue": {"amount": 1.0, "currency": "USD"},
                     }
                 ],
                 "dutiesPayment": {
@@ -442,17 +434,20 @@ MultiPieceShipmentRequest = [
             ],
             "requestedPackageLineItems": [
                 {
+                    "declaredValue": {"amount": 1.0, "currency": "USD"},
                     "dimensions": {
                         "height": 12.0,
                         "length": 12.0,
                         "units": "IN",
                         "width": 12.0,
                     },
+                    "groupPackageCount": 1,
                     "packageSpecialServices": {
-                        "signatureOptionType": True,
+                        "signatureOptionType": "SERVICE_DEFAULT",
                         "specialServiceTypes": ["SIGNATURE_OPTION"],
                     },
                     "sequenceNumber": 1,
+                    "subPackagingType": "OTHER",
                     "weight": {"units": "LB", "value": 1.0},
                 }
             ],
@@ -466,7 +461,6 @@ MultiPieceShipmentRequest = [
                 "specialServiceTypes": ["ELECTRONIC_TRADE_DOCUMENTS"],
             },
             "shipper": {
-                "accountNumber": "2349857",
                 "address": {
                     "city": "MEMPHIS",
                     "countryCode": "US",
@@ -489,25 +483,6 @@ MultiPieceShipmentRequest = [
                 "paymentType": "THIRD_PARTY",
                 "payor": {"responsibleParty": {"accountNumber": "2349857"}},
             },
-            "soldTo": {
-                "address": {
-                    "city": "RICHMOND",
-                    "countryCode": "CA",
-                    "postalCode": "V7C4v7",
-                    "residential": False,
-                    "stateOrProvinceCode": "BC",
-                    "streetLines": [
-                        "Input Your Information",
-                        "Input Your Information",
-                    ],
-                },
-                "contact": {
-                    "companyName": "Input Your Information",
-                    "emailAddress": "Input Your Information",
-                    "personName": "Input Your Information",
-                    "phoneNumber": "Input Your Information",
-                },
-            },
             "totalPackageCount": 2,
             "totalWeight": 1.0,
         },
@@ -517,6 +492,7 @@ MultiPieceShipmentRequest = [
         "accountNumber": {"value": "2349857"},
         "labelResponseOptions": "LABEL",
         "requestedShipment": {
+            "blockInsightVisibility": False,
             "customsClearanceDetail": {
                 "commercialInvoice": {
                     "customerReferences": [
@@ -532,11 +508,13 @@ MultiPieceShipmentRequest = [
                     {
                         "countryOfManufacture": "US",
                         "description": "test",
+                        "name": "test",
                         "harmonizedCode": "00339BB",
                         "numberOfPieces": 1,
                         "quantity": 1,
-                        "quantityUnits": "EA",
+                        "quantityUnits": "PCS",
                         "weight": {"units": "LB", "value": 10.0},
+                        "customsValue": {"amount": 1.0, "currency": "USD"},
                     }
                 ],
                 "dutiesPayment": {
@@ -601,17 +579,20 @@ MultiPieceShipmentRequest = [
             ],
             "requestedPackageLineItems": [
                 {
+                    "declaredValue": {"amount": 1.0, "currency": "USD"},
                     "dimensions": {
                         "height": 11.0,
                         "length": 11.0,
                         "units": "IN",
                         "width": 11.0,
                     },
+                    "groupPackageCount": 1,
                     "packageSpecialServices": {
-                        "signatureOptionType": True,
+                        "signatureOptionType": "SERVICE_DEFAULT",
                         "specialServiceTypes": ["SIGNATURE_OPTION"],
                     },
                     "sequenceNumber": 2,
+                    "subPackagingType": "OTHER",
                     "weight": {"units": "LB", "value": 2.0},
                 }
             ],
@@ -625,7 +606,6 @@ MultiPieceShipmentRequest = [
                 "specialServiceTypes": ["ELECTRONIC_TRADE_DOCUMENTS"],
             },
             "shipper": {
-                "accountNumber": "2349857",
                 "address": {
                     "city": "MEMPHIS",
                     "countryCode": "US",
@@ -647,25 +627,6 @@ MultiPieceShipmentRequest = [
             "shippingChargesPayment": {
                 "paymentType": "THIRD_PARTY",
                 "payor": {"responsibleParty": {"accountNumber": "2349857"}},
-            },
-            "soldTo": {
-                "address": {
-                    "city": "RICHMOND",
-                    "countryCode": "CA",
-                    "postalCode": "V7C4v7",
-                    "residential": False,
-                    "stateOrProvinceCode": "BC",
-                    "streetLines": [
-                        "Input Your Information",
-                        "Input Your Information",
-                    ],
-                },
-                "contact": {
-                    "companyName": "Input Your Information",
-                    "emailAddress": "Input Your Information",
-                    "personName": "Input Your Information",
-                    "phoneNumber": "Input Your Information",
-                },
             },
             "totalPackageCount": 2,
             "totalWeight": 2.0,
